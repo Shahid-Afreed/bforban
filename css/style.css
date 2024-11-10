@@ -1,0 +1,1508 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.video-background {
+  position: absolute;
+  filter: brightness(0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: rotateRight 10s linear infinite;
+  /* Rightward rotation */
+}
+
+/* Define keyframes for rightward rotation (along the X-axis) */
+@keyframes rotateRight {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(360deg);
+    /* Complete 360-degree rotation along x-axis */
+  }
+}
+
+.links a {
+  display: block;
+  font-size: 1em;
+  color: white;
+  margin: 10px 0;
+  text-decoration: none;
+  font-family: monospace;
+  transition: color 0.3s, transform 0.3s;
+  padding-top: 5px;
+  letter-spacing: 2px;
+  /* Smooth transition for color and zoom */
+
+}
+
+.links a:hover {
+  transform: scale(1.7);
+  font-weight: bold;
+}
+
+.social-media {
+  position: fixed;
+  bottom: 60px;
+  /* Positioned near the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* padding-bottom: 20px; */
+}
+
+.social-media a {
+  color: white;
+  font-size: 1.5em;
+  /* Adjusted size for better visibility */
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.social-media a:hover {
+  transform: scale(1.3);
+  /* Zoom effect on hover */
+}
+
+/* Text Below Icons Styling */
+.social-media-text {
+  position: fixed;
+  bottom: 20px;
+  /* Positioned just below the icons */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2em;
+  color: white;
+  text-align: center;
+}
+
+.text-shine {
+  padding: 0px;
+  color: #fff;
+  background: linear-gradient(to right, #ffffff 0, #fff 10%, #00000056 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: monospace;
+  margin-top: 20px;
+  /* Space between the button and the text */
+}
+
+@-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-webkit-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-o-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 360px;
+  }
+}
+
+
+/* ---------------product css----------------- */
+.link-body {
+  background-color: #000;
+  color: #fff;
+  font-family: monospace;
+}
+
+/* Fade-up Animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpAnimation 1.5s ease-out forwards;
+}
+
+@keyframes fadeUpAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  border-bottom: 1px solid #333;
+}
+
+.navbar-main .left-icons,
+.navbar-main .right-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-main .logo_2 {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.logo_2 img {
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .logo_2 img {
+    width: 100px;
+    margin-left: 20px;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  background-color: #11111149;
+  padding: 10px 0;
+  border-top: 1px solid #000000;
+}
+
+.menu a,
+.menu .dropdown-toggle {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.menu a:hover,
+.menu .dropdown-toggle:hover {
+  color: #00ff00;
+}
+
+/* Dropdown Menu Styling */
+.dropdown {
+  position: relative;
+
+}
+
+/* Styling the dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1111114c;
+  border: none;
+  padding: 10px;
+  margin-top: 5px;
+  z-index: 10;
+  width: 200px;
+
+}
+
+.dropdown-menu a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+
+}
+
+.dropdown-menu a:hover {
+  color: #00ff00;
+  background-color: #222;
+}
+
+@media (max-width: 768px) {
+  .dropdown-menu {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.dropdown-menu a.active {
+  color: #00ff00;
+  background-color: #222;
+  font-weight: bold;
+  border: 1px solid white;
+
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.578);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content-search {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 500px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content-search .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modal-content-search input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #000;
+  border: 1px solid #333;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.modal-content-search button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 5px 10px;
+  background-color: #00000060;
+  border: none;
+  color: #ffffff9a;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  /* Added transition for smooth effect */
+}
+
+.modal-content-search button:hover {
+  transform: scale(1.1);
+  /* Scale the button to 1.1 times its size when hovered */
+  background-color: rgba(255, 255, 255, 0.421);
+  color: black;
+}
+
+.text-shine-modal {
+  padding: 0px;
+  color: #ffffff;
+  background: linear-gradient(to right, #ffffff95 0, #fff 10%, #ffffff6c 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear, move-text 10s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: monospace;
+  margin-top: 20px;
+  /* Space between the button and the text */
+}
+
+@-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-webkit-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-o-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 360px;
+  }
+}
+
+
+/* product-section all css */
+.product-section {
+  padding: 50px 0;
+}
+
+.card {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+
+
+.card-img-top {
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card-img-title {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.card-text {
+  color: white;
+}
+
+.btn-custom {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  width: 50%;
+}
+
+.btn-custom:hover {
+  background-color: #00ff00;
+}
+
+/* From Uiverse.io by JaydipPrajapati1910 */
+.button-img-cart {
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 100px;
+  --button-color: #222;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  text-align: center;
+  border-radius: 0.45em;
+  font-family: "Arial";
+  transition: background 0.3s;
+  justify-content: center;
+  position: absolute;
+  bottom: 30px;
+  /* Adjust to control distance from bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  --width: 40%;
+  /* Adjust width as needed */
+  --height: 40px;
+}
+
+.button-img-cart::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: #555;
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button-img-cart::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #555;
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button-img-cart::after,
+.button-img-cart::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper,
+.text,
+.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0
+}
+
+.text,
+.icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.button-img-cart:hover {
+  background: #222;
+}
+
+.button-img-cart:hover .text {
+  top: -100%;
+}
+
+.button-img-cart:hover .icon {
+  top: 0;
+}
+
+.button-img-cart:hover:before,
+.button-img-cart:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button-img-cart:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button-img-cart:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.page-link-pagination {
+  position: relative;
+  color: white;
+  font-size: 24px;
+  display: block;
+  padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+  text-decoration: none;
+  background-color: black;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/* Active page link */
+.page-item.active .page-link-pagination {
+  color: green;
+}
+
+/* Hover effect for page links */
+.page-item .page-link-pagination:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Arrow icon style */
+.page-item a span {
+  font-size: 24px;
+  color: white;
+}
+
+/* Zoom-in effect on hover */
+.page-item .page-link-pagination:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+/* ----------Main Footer Section-------------- */
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  position: sticky;
+}
+
+/* Label Style */
+.footer-section label {
+  font-size: 18px;
+  margin-bottom: 25px;
+  width: 100%;
+  /* Ensures the label takes the full width */
+  text-align: center;
+  /* Ensures label text is centered */
+}
+
+/* Form Control Container */
+.form-control-footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* Make the form responsive */
+  max-width: 400px;
+  /* Prevents input from getting too wide */
+  margin-bottom: 20px;
+  /* Space between input and footer-row */
+}
+
+/* Input Field Style */
+.form-control-footer input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  /* Ensures input isn't too wide */
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Input Focus and Valid States */
+.form-control-footer input:focus,
+.form-control-footer input:valid {
+  outline: 0;
+  border-bottom-color: green;
+}
+
+/* Label Transition */
+.form-control-footer label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  text-align: center;
+}
+
+/* Label Span Animation */
+.form-control-footer label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  color: #fff;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Input Focus or Valid + Label Span */
+.form-control-footer input:focus+label span,
+.form-control-footer input:valid+label span {
+  color: rgba(255, 255, 255, 0.449);
+  transform: translateY(-30px);
+}
+
+/* Row below input (link + social icons) */
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  /* Space between the link and social icons */
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Footer Link Style */
+.footer-link {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: left;
+  /* Align the footer link to the left */
+  width: 100%;
+  max-width: 350px;
+  /* Matches input field width */
+}
+
+/* Hover effect for footer link */
+.footer-link:hover {
+  color: green;
+  text-decoration: line-through;
+}
+
+/* Social Icons Container */
+.social-icons {
+  display: flex;
+  justify-content: flex-end;
+  /* Align social icons to the right */
+  gap: 15px;
+}
+
+/* Social Icon Style */
+.social-icon {
+  font-size: 20px;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+/* Hover effect for social icons */
+.social-icon:hover {
+  color: #00aaff;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 600px) {
+  .footer-section {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .form-control-footer {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  /* Footer Row for Small Screens */
+  .footer-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    /* Center social icons on mobile */
+    padding-top: 10px;
+    /* Add padding-top for social icons on mobile */
+  }
+
+  .social-icon {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  /* Footer link styling */
+  .footer-link {
+    width: 100%;
+    text-align: center;
+    max-width: 100%;
+    /* Ensure the footer link takes full width on small screens */
+  }
+}
+
+/* Unordered list styles */
+.footer-links-row ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style: inside;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  /* Ensure the items align at the top of the container */
+}
+
+.footer-links-row .footer-link-bottom {
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+  width: auto;
+}
+
+/* Hover effect for links */
+.footer-links-row .footer-link-bottom:hover {
+  color: green;
+  transform: scale(1.3);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .footer-links-row ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    align-items: flex-start;
+    /* Align items from the same starting point */
+    justify-content: flex-start;
+    /* Ensure the items start from the top */
+    width: 100%;
+    /* Ensure the list uses the full width of the container */
+  }
+
+  .footer-links-row .footer-link-bottom {
+    font-size: 14px;
+    width: auto;
+    text-align: left;
+    /* Align the text to the left for a cleaner look */
+    padding-left: 20px;
+    /* Optional: Add padding to create indentation */
+  }
+}
+
+
+
+/* ----------account login-form css---------- */
+
+.container-form-main {
+  display: flex;
+  justify-content: center;
+  /* Horizontally centers the content */
+  align-items: center;
+  /* Vertically centers the content */
+  flex-direction: column;
+  /* Ensures the content is stacked vertically */
+  padding: 20px;
+  /* Optional padding to prevent content from touching the edges */
+}
+
+/* Login container */
+.login-container {
+  width: 100%;
+  /* Make it take full width on smaller screens */
+  max-width: 600px;
+  /* Limit width to 600px for large screens */
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Initial box shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: none;
+  border-bottom: none;
+  transition: box-shadow 0.3s ease-in-out;
+  /* box-shadow: 0 8px 10px white;  */
+
+}
+
+/* Hover effect for login container */
+.login-container:hover {
+  box-shadow: 0 8px 30px white;
+  /* Increased shadow on hover */
+}
+
+/* Heading */
+.form-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input group styling */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.inputbox {
+  position: relative;
+  width: 100%;
+  /* Make input box take up full width */
+  max-width: 500px;
+  /* Max width for input fields */
+}
+
+.inputbox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.inputbox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1em;
+  color: #8f8f8f;
+  letter-spacing: 00.05em;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.inputbox input:valid~span,
+.inputbox input:focus~span {
+  color: white;
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0.75em;
+}
+
+.inputbox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #ffffff2a;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.form-heading {
+  color: white;
+  font-size: 30px;
+  font-family: ui-monospace;
+}
+
+.inputbox input:valid~i,
+.inputbox input:focus~i {
+  height: 44px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+/* Forgot password link */
+.forgot-password {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgot-password a {
+  font-size: 12px;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Sign In button */
+.form-action {
+  text-align: center;
+  width: 100%;
+  /* Ensure the button is centered */
+}
+
+.sign-in-button {
+  padding: 12px 30px;
+  /* Make the button a bit smaller */
+  font-size: 16px;
+  background-color: #0000005a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: auto;
+  /* Make the button width auto (no 100% width) */
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+  /* Centers the button */
+}
+
+.sign-in-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Create account link below the button */
+.create-account {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.create-account p {
+  font-size: 14px;
+  color: #666;
+}
+
+.create-account a {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+
+  /* For tablets and smaller devices */
+  .form-heading {
+    font-size: 20px;
+  }
+
+  .login-container {
+    width: 90%;
+    /* Slightly reduced width on smaller devices */
+    max-width: 500px;
+    /* Keep it manageable on larger small screens */
+  }
+
+  .inputbox {
+    width: 100%;
+    /* Ensure input box takes up full width */
+  }
+
+  .sign-in-button {
+    font-size: 14px;
+    padding: 10px 20px;
+    width: auto;
+    /* Center button width */
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* For mobile screens */
+  .form-heading {
+    font-size: 18px;
+  }
+
+  .login-container {
+    width: 100%;
+    /* Full width on mobile */
+    padding: 15px;
+  }
+
+  .inputbox {
+    width: 100%;
+    /* Ensure the input fields are full width */
+  }
+
+  .sign-in-button {
+    font-size: 14px;
+    padding: 10px 20px;
+    width: auto;
+    /* Center button width */
+  }
+
+  .forgot-password {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .create-account p {
+    font-size: 13px;
+  }
+}
+
+
+
+/* ------------cart css-------------- */
+
+.cart-container{
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 50px 20px;  /* Default padding */
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+height: auto; /* Allow height to adjust based on content */
+margin: 20px;
+}
+
+/* Cart heading styling */
+.cart-heading {
+font-size: 34px;
+font-weight: bold;
+margin-bottom: 20px;
+color: white;
+font-family: monospace;
+}
+
+/* Cart button styling */
+.cart-button {
+font-size: 16px;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+background-color: #000000;
+color: white;
+transition: background-color 0.3s ease;
+}
+
+.cart-button:hover {
+background-color: #ffffff;
+color: #000000;
+}
+
+/* Make cart-container responsive on smaller screens */
+@media (max-width: 768px) {
+.cart-container {
+  padding: 40px 15px; /* Adjust padding for tablets and small screens */
+}
+
+.cart-heading {
+  font-size: 28px; /* Smaller font size for mobile */
+  margin-bottom: 15px; /* Reduce margin for mobile */
+}
+
+.cart-button {
+  font-size: 14px;
+  padding: 8px 16px; /* Smaller button padding */
+}
+}
+
+/* For very small screens (max-width: 480px or smaller) */
+@media (max-width: 480px) {
+.cart-container {
+  padding: 20px 10px; /* Further reduce padding for very small screens */
+  margin: 10px; /* Reduce margins */
+}
+
+.cart-heading {
+  font-size: 24px; /* Even smaller font size */
+  margin-bottom: 10px; /* Reduce margin */
+}
+
+.cart-button {
+  font-size: 12px; /* Smaller button text */
+  padding: 6px 12px; /* Smaller button padding */
+}
+}
+
+/* For extremely small screens (max-width: 320px) */
+@media (max-width: 320px) {
+.cart-container {
+  padding: 15px 5px; /* Minimal padding for very small screens */
+}
+
+.cart-heading {
+  font-size: 20px; /* Much smaller font size for tiny screens */
+  margin-bottom: 8px; /* Adjust bottom margin */
+}
+
+.cart-button {
+  font-size: 10px; /* Super small button text */
+  padding: 4px 10px; /* Small button padding */
+}
+}
+
+.cart-button:hover {
+background-color: #ffffff;
+color: #000000; /* Darker blue when hovering */
+}
+
+/* From Uiverse.io by doniaskima */ 
+.btn-53,
+.btn-53 *,
+.btn-53 :after,
+.btn-53 :before,
+.btn-53:after,
+.btn-53:before {
+border: 0 solid;
+box-sizing: border-box;
+}
+
+.btn-53 {
+-webkit-tap-highlight-color: transparent;
+-webkit-appearance: button;
+background-color: black;
+background-image: none;
+color:white;
+cursor: pointer;
+font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+  Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+font-size: 16px; /* Default font size for larger screens */
+line-height: 1.5;
+margin: 0;
+-webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+padding: 0;
+text-transform: uppercase;
+border-radius: 10px;
+display: block;
+font-weight: 900;
+overflow: hidden;
+padding: 0.6rem 3rem;
+position: relative;
+}
+
+.btn-53:disabled {
+cursor: default;
+}
+
+.btn-53:-moz-focusring {
+outline: auto;
+}
+
+
+.btn-53 [hidden] {
+display: none;
+}
+
+.btn-53 {
+border-radius: 10px;
+box-sizing: border-box;
+display: block;
+font-weight: 900;
+overflow: hidden;
+padding: 0.6rem 3rem;
+position: relative;
+text-transform: uppercase;
+box-shadow: 0 4px 10px rgb(255, 255, 255);
+
+}
+
+.btn-53 .original {
+background: white;
+color: black;
+display: grid;
+inset: 0;
+place-content: center;
+position: absolute;
+font-size: 18px;
+transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.btn-53:hover .original {
+transform: translateY(100%);
+}
+
+.btn-53 .letters {
+display: inline-flex;
+justify-content: center;
+flex-wrap: nowrap; /* Prevent the letters from wrapping */
+font-size: 16px; /* Default font size for larger screens */
+}
+
+.btn-53 span {
+opacity: 0;
+transform: translateY(-15px);
+transition: transform 0.4s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
+}
+
+.btn-53:hover span {
+opacity: 1;
+transform: translateY(0);
+}
+
+
+
+
+/* @media (min-width: 768px) {
+.btn-53.w-md-auto {
+  width: auto; 
+}
+} */
+
+.btn-53 span:nth-child(2n) {
+transform: translateY(15px);
+}
+
+.btn-53:hover span {
+opacity: 1;
+transform: translateY(0);
+}
+
+.btn-53:hover span:nth-child(2) {
+transition-delay: 0.1s;
+}
+
+.btn-53:hover span:nth-child(3) {
+transition-delay: 0.2s;
+}
+
+.btn-53:hover span:nth-child(4) {
+transition-delay: 0.3s;
+}
+
+.btn-53:hover span:nth-child(5) {
+transition-delay: 0.4s;
+}
+
+.btn-53:hover span:nth-child(6) {
+transition-delay: 0.5s;
+}
+@media (max-width: 768px) {
+.btn-53 .letters {
+  font-size: 14px; /* Reduce font size for mobile */
+  justify-content: center; /* Ensure text stays centered */
+  flex-wrap: nowrap; /* Ensure text stays in one line */
+}
+
+.btn-53 .letters span {
+  font-size: 14px; /* Reduce letter size for mobile */
+}
+
+.btn-53 {
+  padding: 0.4rem 2rem; /* Adjust padding for smaller screens */
+  min-width: 120px; /* Ensure the button remains reasonably sized */
+}
+}
+
+/* For extra small devices (250px screen width) */
+@media (max-width: 250px) {
+.btn-53 .letters {
+  font-size: 10px; /* Further reduce font size on very small screens */
+}
+
+.btn-53 .letters span {
+  font-size: 10px; /* Reduce letter size further */
+}
+
+.btn-53 {
+  min-width: 100px; /* Ensure the button fits on very small screens */
+  padding: 0.3rem 1.5rem; /* Adjust padding further to fit */
+}
+}
+
+
+/* From Uiverse.io by aguerquin */ 
+
+/* Default styles for the cube and button */
+.cube {
+transition: all 0.4s;
+transform-style: preserve-3d;
+width: 200px;
+height: 47px;
+}
+
+.button-icon:hover {
+border-color: #000000;
+}
+
+.button-icon:hover .cube {
+transform: rotateX(90deg);
+}
+
+/* Styling for the sides of the cube */
+.side {
+position: absolute;
+height: 47px;
+width: 200px;
+display: flex;
+font-size: 16px; /* Default font size */
+justify-content: center;
+align-items: center;
+letter-spacing: 0.5px;
+font-weight: bold;
+}
+
+/* Top side styling */
+.top {
+background:black;
+color: #fff;
+transform: rotateX(-90deg) translate3d(0, 13.5px, 2em);
+box-shadow: 0 4px 10px white;
+}
+.top-text{
+color: white;
+text-decoration: none;
+}
+/* Front side styling */
+.front {
+background: black;
+color: #fff;
+transform: translate3d(0, 0, 1em);
+box-shadow: 0 4px 10px rgb(255, 255, 255); /* You can adjust the values as needed */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+.cube {
+width: 180px;  /* Slightly reduce the width for smaller screens */
+height: 45px;  /* Reduce height slightly */
+}
+
+.side {
+width: 180px;  /* Match the width change */
+font-size: 14px; /* Smaller font size for smaller screens */
+}
+}
+
+/* For very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+.cube {
+width: 160px;  /* Further reduce the width */
+height: 40px;  /* Reduce height further */
+}
+
+.side {
+width: 160px;  /* Adjust side width */
+font-size: 12px; /* Reduce font size for better readability */
+}
+}
+
+/* For extra small devices (max-width: 250px) */
+@media (max-width: 230px) {
+.cube {
+width: 140px;  /* Significantly reduce the size */
+height: 30px;  /* Further reduce height */
+}
+
+.side {
+width: 140px;  /* Match width of the cube */
+font-size: 10px; /* Very small font size for tiny screens */
+padding: 2px;  /* Adjust padding for very small screens */
+}
+
+.top {
+transform: rotateX(-90deg) translate3d(0, 10px, 2em);  /* Adjust top side for smaller size */
+}
+
+.front {
+transform: translate3d(0, 0, 1em);  /* Keep the front side transform */
+}
+}
