@@ -121,7 +121,7 @@ html {
 .text-shine {
   padding: 0px;
   color: #fff;
-  background: linear-gradient(to right, #ffffff 0, #fff 10%, #00000056 20%);
+  background: linear-gradient(to right, #ffffff 0, #fff 10%, #e9e9e983 50%);
   background-position: 0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
