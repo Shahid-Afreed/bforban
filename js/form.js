@@ -21,3 +21,5 @@ window.onload = function() {
         document.getElementById('create-account-form').style.display = 'none';
     }
 }
+
+

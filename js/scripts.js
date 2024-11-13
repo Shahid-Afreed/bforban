@@ -60,6 +60,10 @@ window.addEventListener('resize', () => {
     });
 
 
+
+    
+
+
 //  JavaScript for Search icon Modal Functionality
     const openModalButton = document.getElementById('openModal'); 
     const closeModalButton = document.getElementById('closeModal');
@@ -80,121 +84,192 @@ window.addEventListener('resize', () => {
         }
     });
 
-    
 
-    // product-section
-    const productsPerPage = 6; // Adjust this as needed
-    const totalProducts = document.querySelectorAll('.product-section .row .col-md-4').length;
-    const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+
+
+
+    // products-dropdown filter funtionality
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the CAPS, T-SHIRTS, and ALL PRODUCTS links
+        const capsLink = document.getElementById('capsLink');
+        const tshirtLink = document.getElementById('tshirtLink');
+        const allProductsLink = document.getElementById('allProductsLink');
+        
+        // Get all product elements
+        const allProducts = document.querySelectorAll('.product-section .row .col-md-4');
+        const paginationContainer = document.getElementById('pagination');
+        
+        const productsPerPage = 6;  // Number of products per page
+        let currentPage = getCurrentPageFromURL() || 1;  // Get the page number from the URL or default to 1
+        let currentCategory = getCurrentCategoryFromURL() || 'all';  // Default category is 'all'
+        
+        // Function to get current page from the URL
+        function getCurrentPageFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('page')) || 1;
+        }
     
-    // Get the pagination element
-    const paginationContainer = document.getElementById('pagination');
-    let currentPage = getCurrentPageFromURL() || 1;  // Get the page number from the URL or default to 1
+        // Function to get the current category from the URL
+        function getCurrentCategoryFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('category') || 'all';  // Default to 'all' if not provided
+        }
     
-    // Function to get the current page number from the URL's query string
-    function getCurrentPageFromURL() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return parseInt(urlParams.get('page'));
-    }
+        // Function to shuffle the products array randomly
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+            }
+        }
     
-    // Function to show the correct products based on the current page
-    function showProductsForPage(pageNumber) {
-      const startIndex = (pageNumber - 1) * productsPerPage;
-      const endIndex = startIndex + productsPerPage;
+        // Function to shuffle products if 24 hours have passed
+        function shuffleProductsIfNeeded() {
+            const lastShuffleTime = localStorage.getItem('lastShuffleTime');
+            const currentTime = new Date().getTime();
     
-      // Hide all product cards
-      const productCards = document.querySelectorAll('.product-section .row .col-md-4');
-      productCards.forEach(card => card.style.display = 'none');
+            // If last shuffle was more than 24 hours ago or there is no timestamp in localStorage
+            if (!lastShuffleTime || currentTime - lastShuffleTime > 24 * 60 * 60 * 1000) {
+                // Shuffle the products
+                shuffleArray(Array.from(allProducts));
     
-      // Show the product cards for the current page
-      const pageProducts = Array.from(productCards).slice(startIndex, endIndex);
-      pageProducts.forEach(card => card.style.display = 'block');
+                // Store the current time as the last shuffle time in localStorage
+                localStorage.setItem('lastShuffleTime', currentTime);
+            }
+        }
     
-      // Update active pagination link
-      const pageLinks = document.querySelectorAll('.page-item');
-      pageLinks.forEach(link => link.classList.remove('active'));
-      const activeLink = document.querySelector(`.page-item[data-page="${pageNumber}"]`);
-      if (activeLink) activeLink.classList.add('active');
-    }
+        // Function to set the active link for dropdown
+        function setActiveLink(link) {
+            const links = [capsLink, tshirtLink, allProductsLink];
+            links.forEach(l => l.classList.remove('active')); // Remove 'active' from all links
+            link.classList.add('active'); // Add 'active' class to the clicked link
+        }
     
-    // Function to create pagination links dynamically
-    function createPagination() {
-      for (let i = 1; i <= totalPages; i++) {
-          const pageItem = document.createElement('li');
-          pageItem.classList.add('page-item');
-          pageItem.setAttribute('data-page', i);
-          const pageLink = document.createElement('a');
-          pageLink.classList.add('page-link-pagination');
-          pageLink.setAttribute('href', `?page=${i}`);  // Append the page number to the URL
-          pageLink.innerText = i;
+        // Function to filter and paginate products
+        function showProductsForPage(filteredCategoryName, pageNumber) {
+            let filteredProducts = [];
     
-          pageItem.appendChild(pageLink);
-          paginationContainer.insertBefore(pageItem, document.getElementById('next-page'));  // Insert before the forward arrow
-      }
-    }
+            // If category is 'all', show all products
+            if (filteredCategoryName === 'all') {
+                filteredProducts = Array.from(allProducts);  // All products
+            } else {
+                // Otherwise, filter by specific category (caps or tshirts) based on the 'name' attribute
+                filteredProducts = Array.from(allProducts).filter(product => {
+                    return product.getAttribute('name') === filteredCategoryName;
+                });
+            }
     
-    // Function to go to the next page
-    function goToNextPage() {
-      if (currentPage < totalPages) {
-          currentPage++;
-          window.location.search = `?page=${currentPage}`;  // Reload the page with the updated page number in the URL
-      }
-    }
+            const totalFilteredProducts = filteredProducts.length;
+            const totalPages = Math.ceil(totalFilteredProducts / productsPerPage);
+            
+            const startIndex = (pageNumber - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
     
-    // Function to go to the previous page
-    function goToPreviousPage() {
-      if (currentPage > 1) {
-          currentPage--;
-          window.location.search = `?page=${currentPage}`;  // Reload the page with the updated page number in the URL
-      }
-    }
+            // Hide all products initially
+            allProducts.forEach(product => product.style.display = 'none');
     
-    // Add event listeners to the next and previous arrows
-    document.getElementById('next-page').addEventListener('click', function (e) {
-      e.preventDefault();
-      goToNextPage();
+            // Show only the filtered products for the current page
+            const pageProducts = filteredProducts.slice(startIndex, endIndex);
+            pageProducts.forEach(product => product.style.display = 'block');
+    
+            // Update pagination for filtered products
+            updatePagination(totalPages, pageNumber);
+        }
+    
+        // Function to update pagination
+        function updatePagination(totalPages, pageNumber) {
+            // Clear existing pagination links
+            paginationContainer.innerHTML = `
+                <li class="page-item" id="prev-page">
+                    <a class="page-link-pagination" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            `;
+            
+            // Create page number items dynamically
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.createElement('li');
+                pageItem.classList.add('page-item');
+                if (i === pageNumber) pageItem.classList.add('active');
+                pageItem.setAttribute('data-page', i);
+                const pageLink = document.createElement('a');
+                pageLink.classList.add('page-link-pagination');
+                pageLink.setAttribute('href', `?category=${currentCategory}&page=${i}`);
+                pageLink.innerText = i;
+                pageItem.appendChild(pageLink);
+                paginationContainer.insertBefore(pageItem, document.getElementById('next-page'));
+            }
+    
+            // Add the next page button
+            const nextPage = document.createElement('li');
+            nextPage.classList.add('page-item');
+            nextPage.setAttribute('id', 'next-page');
+            nextPage.innerHTML = `
+                <a class="page-link-pagination" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            `;
+            paginationContainer.appendChild(nextPage);
+        }
+    
+        // Function to handle the "Next" button
+        function goToNextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                window.location.search = `?category=${currentCategory}&page=${currentPage}`;
+            }
+        }
+    
+        // Function to handle the "Previous" button
+        function goToPreviousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                window.location.search = `?category=${currentCategory}&page=${currentPage}`;
+            }
+        }
+    
+        // Initialize pagination and products
+        shuffleProductsIfNeeded(); // Shuffle if needed (only once in 24 hours)
+        showProductsForPage(currentCategory, currentPage); // Show products based on the category and page
+        
+        // Handle pagination navigation
+        document.getElementById('next-page').addEventListener('click', function (e) {
+            e.preventDefault();
+            goToNextPage();
+        });
+        
+        document.getElementById('prev-page').addEventListener('click', function (e) {
+            e.preventDefault();
+            goToPreviousPage();
+        });
+    
+        // Make sure the correct link is active on page load
+        if (currentCategory === 'all') {
+            setActiveLink(allProductsLink);
+        } else if (currentCategory === 'caps') {
+            setActiveLink(capsLink);
+        } else if (currentCategory === 'tshirt') {
+            setActiveLink(tshirtLink);
+        }
     });
     
-    document.getElementById('prev-page').addEventListener('click', function (e) {
-      e.preventDefault();
-      goToPreviousPage();
+    
+    
+    
+    // --------------------------------------------------------------------------------
+
+
+
+
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();  // Disable right-click context menu
     });
+
+   
+
+
+
     
-    // Initialize the pagination
-    createPagination();
-    
-    // Show the products for the current page from the URL
-    showProductsForPage(currentPage);
-    
-
-
-
-
-
-
-
-
-
-// Function to toggle between forms, save the state in localStorage, and reload the page
-function toggleForm(formType) {
-    // Save the form state in localStorage
-    localStorage.setItem('formType', formType);
-    // Reload the page
-    window.location.reload();
-}
-
-// Check the saved form state on page load
-window.onload = function() {
-    const savedForm = localStorage.getItem('formType');
-    
-    // If there's a saved form type, show the corresponding form
-    if (savedForm === 'create') {
-        // Show create account form, hide login form
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('create-account-form').style.display = 'block';
-    } else {
-        // Show login form by default (or if no formType is saved)
-        document.getElementById('login-form').style.display = 'block';
-        document.getElementById('create-account-form').style.display = 'none';
-    }
-}
