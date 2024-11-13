@@ -18,7 +18,7 @@
 img {
   pointer-events: none;  /* Prevent images from being dragged */
   -webkit-user-drag: none;
-   user-drag: none;
+  user-drag: none;
 }
 
 body,
@@ -75,7 +75,7 @@ html {
 
 .links a {
   display: block;
-  font-size: 1em;
+  font-size: 0.9em;
   color: white;
   margin: 15px 0;
   text-decoration: none;
@@ -1612,7 +1612,7 @@ html {
   /* Centers content vertically */
   text-align: center;
   /* Ensures text is centered */
-  padding: 40px 20px;
+  padding: 30px 10px;
   /* Adds padding to the section */
 }
 
@@ -1630,6 +1630,7 @@ html {
   max-width: 800px;
   /* Limits width of the paragraph for readability */
   margin: 0 auto;
+  /* line-height: 2; */
   /* Centers the paragraph */
 }
 

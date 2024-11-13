@@ -1,6 +1,4 @@
-// Function to toggle between forms, save the state in localStorage, and reload the page
 function toggleForm(formType) {
-    // Save the form state in localStorage
     localStorage.setItem('formType', formType);
     // Reload the page
     window.location.reload();
@@ -22,4 +20,12 @@ window.onload = function() {
     }
 }
 
+
+
+
+
+// rightclick disable
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();  // Disable right-click context menu
+});
 
