@@ -1634,18 +1634,6 @@ html {
   /* Centers the paragraph */
 }
 
-/* Mobile responsiveness for smaller screens */
-@media (max-width: 768px) {
-  .shipping-depth h1 {
-    font-size: 1.5rem;
-    /* Adjust heading size for smaller screens */
-  }
-
-  .shipping-depth p {
-    font-size: 0.95rem;
-    /* Adjust paragraph font size for better readability */
-  }
-}
 
 /* Extra small devices */
 @media (max-width: 480px) {
@@ -1657,6 +1645,32 @@ html {
   .shipping-depth p {
     font-size: 0.85rem;
     /* Adjust paragraph size for smaller devices */
+  }
+}
+
+.shipping-days {
+  font-size: 1.25rem; /* Default font size */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .shipping-depth h1 {
+    font-size: 1.5rem;
+  }
+
+  .shipping-depth {
+      text-align: center; /* Center the text for better alignment on mobile */
+  }
+
+  .shipping-days {
+      font-size: 1rem; /* Reduce font size for smaller screens */
+      white-space: nowrap; /* Prevent the text from wrapping */
+  }
+
+  /* Optional: Adjust the paragraph text for smaller screens */
+  .shipping-depth p {
+      font-size: 0.875rem; /* Reduce paragraph font size */
+      line-height: 1.5; /* Adjust line height for better readability */
   }
 }
 
@@ -1741,8 +1755,21 @@ html {
 
 /* about us page css */
 
+
 .about-heading {
-  font-size: 3rem;
+  font-size: 2.5rem; /* Default font size for larger screens */
+}
+
+/* Responsive Styles for mobile */
+@media (max-width: 768px) {
+  .about-heading {
+      font-size: 1.8rem; /* Reduce font size for mobile screens */
+  }
+}
+@media (max-width: 350px) {
+  .about-heading {
+      font-size: 1.2rem; /* Reduce font size for mobile screens */
+  }
 }
 
 .shipping-depth {
@@ -1801,6 +1828,7 @@ html {
   font-weight: bold;
   text-align: left;
   padding-left: 20px;
+  text-align: center;
   /* Indent h2 */
 }
 
