@@ -806,7 +806,7 @@ html {
   text-align: left;
   /* Align the footer link to the left */
   width: 100%;
-  max-width: 350px;
+  max-width: 250px;
   /* Matches input field width */
 }
 
@@ -1612,7 +1612,7 @@ html {
   /* Centers content vertically */
   text-align: center;
   /* Ensures text is centered */
-  padding: 30px 10px;
+  padding: 40px 20px;
   /* Adds padding to the section */
 }
 
@@ -1742,7 +1742,7 @@ html {
 /* about us page css */
 
 .about-heading {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .shipping-depth {

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>BeforeBan</title>
+    <style>
+
+
+.contact-input {
+    background-color: black;
+    color: white; /* Text color */
+    border: 1px solid white; /* White border */
+    outline: none;
+    padding: 10px; /* Add some padding to the inputs */
+    font-size: 16px; /* Optional: Adjust font size */
+}
+
+/* Placeholder text color */
+.contact-input::placeholder {
+    color: rgba(255, 255, 255, 0.281); /* White placeholder text */
+}
+
+/* Focus state for inputs */
+.contact-input:focus {
+    color: white;
+    background-color: black;
+    outline-color: white;
+    box-shadow: -3px -3px 20px white;
+    transition: .1s;
+    transition-property: box-shadow;
+}
+
+
+    </style>
+</head>
+
+<body class="link-body">
+
+    <div class="container fade-up">
+
+        <nav class="navbar-main fade-up">
+            <div class="left-icons">
+                <a href="#" class="text-white" id="openModal"><i class="fas fa-search"></i></a>
+            </div>
+
+            <div class="logo_2">
+                <a href="index.html"><img src="images/logo2.png" alt=""></a>
+            </div>
+
+            <div class="right-icons">
+                <a href="account.html" class="text-white"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="text-white"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownAll">
+                    All
+                </a>
+                <ul class="dropdown-menu bg-black" id="dropdownAllMenu">
+                    <li><a class="dropdown-item" href="products.html?category=caps&page=1" id="capsLink">CAPS</a></li>
+    <li><a class="dropdown-item" href="products.html?category=tshirt&page=1" id="tshirtLink">T-SHIRTS</a></li>
+    <li><a class="dropdown-item" href="products.html?category=all&page=1" id="allProductsLink">ALL PRODUCTS</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownCollection">
+                    Collections
+                </a>
+                <ul class="dropdown-menu bg-black" id="dropdownCollectionMenu">
+                    <li><a class="dropdown-item" href="#">OVERSIZED-T</a></li>
+                    <li><a class="dropdown-item" href="#">BASEBALL CAPS</a></li>
+                    <li><a class="dropdown-item" href="#">STREETWEAR SET</a></li>
+                </ul>
+            </div>
+
+            <a href="#">Limited</a>
+        </div>
+
+        <h1 class="pb-2 pt-5 about-heading text-center">Contact Us</h1>
+
+
+        <div class="shipping-depth">
+
+            <p class="pt-2">At Bforban Clothing, we believe that every interaction with our valued customers should be an experience of luxury and care. Whether you have a question, require assistance, or simply wish to share your thoughts, we welcome your communication. Our team is dedicated to providing exceptional service, ensuring your complete satisfaction at every step.</p>
+
+
+            <h2 class="pt-3 text-center">How May We Assist You?</h2>
+
+            <p class="pt-2">Your inquiries are of utmost importance to us. Whether you need support with an order, have a product inquiry, or seek personalized styling advice, our team is here to assist you with the utmost professionalism and efficiency.</p>
+            <p class="pt-5"> We invite you to reach out to us via the following methods:</p>
+
+<!-- 
+            <div class="contact-info  border border-white mt-3">
+            <h2 class="pt-2 text-center">Contact Information</h2>
+            <h5 class="pt-4 text-center">Email Us</h5>
+            <p class="pt-2">For prompt and personalized assistance, please feel free to contact us at:</p>
+            <p class=""><a href="">support@bforban.com</a></p>
+
+            <h5 class="pt-4 text-center">Speak with Us Directly</h5>
+            <p class="">
+                If you prefer to speak with one of our experts, we would be delighted to assist you:</p>
+                <p class="">+91 9656266105</p> 
+                <p class=""> Our team is available Monday through Friday, 9 AM to 6 PM EST.</p> 
+
+
+                <h5 class="pt-4 text-center">Social Media</h5>
+                <p class="">Connect with us across our curated social media channels for the latest updates, styling inspiration, and exclusive content:                </p>
+                <p class="">Instagram: <a href="">@BforbanClothing</a> &nbsp;
+                    Facebook: <a href="">BforbanClothing</a>&nbsp;
+                    Twitter: <a href="">@BforbanC</a></p>&nbsp;
+                
+                </div> -->
+
+    
+
+
+                <div class="contact-form">
+                <h5 class="pt-5 text-center">Get in Touch</h5>
+
+                <form action="your-form-processing-script.php" method="POST">
+                    <div class="row pt-4">
+                        <!-- Full Name & Email Inputs -->
+                        <div class="col-md-6">
+                            <!-- <input type="text" class="form-control" id="full-name" name="full_name" placeholder="Enter your full name" required> -->
+                            <input placeholder="Full name" id="full-name" class="contact-input form-control border border-white" name="full_name" type="text" required>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required> -->
+                            <input placeholder="Email" id="email" class="contact-input form-control border border-white " name="email" type="email" required>
+
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <!-- Mobile Number Input -->
+                        <div class="col-md-12">
+                            <!-- <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required> -->
+                            <input placeholder="Phone number" id="mobile" class="contact-input form-control border border-white " name="mobile" type="tel" required>
+
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <!-- Message Input -->
+                        <div class="col-12">
+                            <!-- <textarea class="form-control" id="message" name="message" rows="4" placeholder="Enter your message" required></textarea> -->
+                            <textarea placeholder="Comment" id="message" class="contact-input form-control border border-white  " rows="4" name="message" type="text" required></textarea>
+
+                        </div>
+                    </div>
+            
+                    <!-- Submit Button -->
+                    <div class="text-center pt-4">
+                        <button type="submit" class="sign-in-button">Send</button>
+                                        </div>
+                </form>
+            </div>
+               
+        </div>
+   
+
+
+
+        <div class="footer-section container">
+            <label for="email-text">SUBSCRIBE TO OUR B4B SIGNUP:</label>
+            <div class="form-control-footer">
+                <input type="email" required>
+                <label>
+                    <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">n</span><span
+                        style="transition-delay:100ms">t</span><span style="transition-delay:150ms">e</span><span
+                        style="transition-delay:200ms">r</span><span style="transition-delay:250ms"></span><span
+                        style="transition-delay:300ms">e</span><span style="transition-delay:350ms">m</span><span
+                        style="transition-delay:400ms">a</span><span style="transition-delay:450ms">i</span><span
+                        style="transition-delay:500ms">l</span><span style="transition-delay:550ms"></span><span
+                        style="transition-delay:600ms">i</span><span style="transition-delay:650ms">d</span>
+                </label>
+            </div>
+
+            <!-- Row below input with a link centered and social icons on the right -->
+            <div class="footer-row mt-5">
+                <a href="index.html" class="footer-link">@ 2024: BFORBAN CLOTHING</a>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- New row for footer links centered -->
+            <div class="footer-links-row">
+                <ul class="mt-5">
+                    <li><a href="refund_policy.html" class="footer-link-bottom">Refund Policy</a></li>
+                    <li><a href="terms_of_services.html" class="footer-link-bottom">Terms of Services</a></li>
+                    <li><a href="privacy_policy.html" class="footer-link-bottom">Privacy Policy</a></li>
+                    <li><a href="shipping_policy.html" class="footer-link-bottom">Shipping Policy</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content-search">
+            <span class="close" id="closeModal">&times;</span>
+            <h5 class="text-shine-modal">"FIND YOUR THREAD"</h5>
+            <input type="text" placeholder="Search...">
+            <button type="button">Search</button>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="js/scripts.js"></script>
+    <script src="js/form.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybBogGz+zWkRJixsnhRQZBs3mI1cE5Qihc95cJfM6HLFfM5bs"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-eHRCQYeF4mZ4hxLnGgEv99d/6sICnxD+5y6LP6azHxSHCJcWuKbB0I4laYFejJOE"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
