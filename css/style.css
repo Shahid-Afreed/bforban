@@ -256,9 +256,9 @@ html {
     margin-left: 15px;
   }
 
-  .navbar-main {
-    padding: 10px 15px; /* Adjust padding for small screens */
-  }
+  /* .navbar-main {
+    padding: 10px 15px; 
+  } */
 
   .navbar-main .left-icons,
   .navbar-main .right-icons {
@@ -277,9 +277,9 @@ html {
     margin-left: 10px;
   }
 
-  .navbar-main {
-    padding: 5px 10px; /* Further reduce padding */
-  }
+  /* .navbar-main {
+    padding: 5px 10px; 
+  } */
 
   .navbar-main .left-icons,
   .navbar-main .right-icons {
