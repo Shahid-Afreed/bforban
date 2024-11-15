@@ -472,35 +472,49 @@ html {
   padding: 50px 0;
 }
 
+/* Card Styling */
 .card {
   background-color: #111;
   color: #fff;
   border: 1px solid #333;
   border-radius: 5px;
+  position: relative; /* Ensures hover image is placed over the default image */
+  overflow: hidden; /* Ensure hover image stays within the image area */
 }
 
-@media (max-width: 1000px) {
-  .col-md-4 {
-    width: 50% !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .col-md-4 {
-    width: 100% !important;
-  }
-  
-  .product {
-    margin-bottom: 15px;
-  }
-}
-
+/* Default Image Styling */
 .card-img-top {
-  height: 450px;
-  object-fit: cover;
-  object-position: top;
+  width: 100%;  /* Ensures the image stretches across the full width */
+  height: 450px; /* Fixed height to match the card image size */
+  object-fit: cover; /* Ensures image covers the entire area without stretching */
+  object-position: top; /* Aligns the image to the top */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
 }
 
+/* Hover Image Styling (Initially hidden) */
+.card-img-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  /* Matches the default image width */
+  height: 450px; /* Matches the default image height */
+  object-fit: cover; /* Ensures image fits perfectly */
+  object-position: top; /* Ensures the hover image aligns with the default image */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for both opacity and transform */
+}
+
+/* Show Hover Image on Hover */
+.card:hover .card-img-hover {
+  opacity: 1; /* Make the hover image visible */
+  transform: scale(1.1); /* Slight zoom-in effect */
+}
+
+.card:hover .card-img-top {
+  opacity: 0; /* Hide the default image */
+}
+
+/* Card Title & Text Styling */
 .card-img-title {
   color: #ffffff;
   font-size: 16px;
@@ -509,6 +523,24 @@ html {
 .card-text {
   color: white;
 }
+
+/* Media Queries for responsiveness */
+@media (max-width: 1000px) {
+  .col-md-4 {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .col-md-4 {
+    width: 100% !important;
+  }
+
+  .product {
+    margin-bottom: 15px;
+  }
+}
+
 
 .btn-custom {
   background-color: #333;
@@ -1646,29 +1678,33 @@ html {
 
 /* collections page css */
 
+.card-collection {
+  background-color: #111;
+  color: #fff;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
 .card-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* Centers content vertically */
-  align-items: center;
-  /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
   padding-top: 20px;
   padding-bottom: 10px;
-  /* Adjust this height based on your design */
   position: relative;
-  /* To position arrows absolutely */
 }
 
 /* Button container styling */
 .container-collection {
   display: flex;
   position: relative;
-  /* To ensure the arrows are positioned relative to this container */
   align-items: center;
-  /* Centers the button horizontally */
   justify-content: center;
-  /* Centers the button in the middle */
+  padding-top: 10px;
+  width: 100%;  /* Ensures container takes up full width */
+  text-align: center;  /* Center text in mobile view */
 }
 
 /* Button styling */
@@ -1684,12 +1720,16 @@ html {
   transition: all .3s ease;
   position: relative;
   text-decoration-line: none;
-  /* Position the button relative to allow for arrow positioning */
+  white-space: nowrap; /* Prevents text from wrapping */
+  display: inline-flex;  /* Ensures the button stays in one row */
+  align-items: center;
+  justify-content: center;
 }
 
-
 /* Arrow styling */
-
+.button-collection i {
+  margin-left: 8px;
+}
 
 .button-collection:hover {
   letter-spacing: 2px;
@@ -1714,6 +1754,21 @@ html {
 .collection-card-link {
   text-decoration: none;
 }
+
+/* Mobile-responsive: Ensures button is on a single row */
+@media (max-width: 600px) {
+  .container-collection {
+    flex-direction: row;  /* Ensures the button and any other elements stay in a row */
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .button-collection {
+    font-size: 16px;  /* Slightly smaller font size */
+    padding: .5em 1em;  /* Adjust padding */
+  }
+}
+
 
 
 
