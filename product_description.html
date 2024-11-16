@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>BeforeBan</title>
+    <style>
+/* Card body styling */
+
+
+/* General container and row styling */
+.container-pd {
+  max-width: 1200px; /* Optional: ensures the container doesn't stretch too wide */
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 0 20px; /* Optional: adds some padding inside the container */
+}
+
+.product-description {
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between; /* Space between columns by default */
+}
+
+/* Flexbox column structure */
+.col-6 {
+  flex: 1;
+}
+
+/* Main image styling */
+.main-image {
+  height: 500px; /* Fixed height for the main image */
+  overflow: hidden;
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+/* Sub-images styling */
+.sub-images {
+  display: flex;
+  padding-top: 20px;
+  justify-content: center; /* Center sub-images */
+    gap: 15px;
+}
+
+.sub-images img {
+  width: 15%; /* Sub images take 10% of the column width */
+  object-fit: cover;
+
+}
+
+.sub-images img:hover {
+  transform: scale(1.2); /* Zoom in by 20% */
+  z-index: 1; /* Ensure the image stays on top when hovered */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow effect for a more noticeable zoom */
+}
+
+/* Product info section styling */
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 14px;
+  color: white;
+  padding-top: 15px;
+}
+
+
+
+/* Media query for screens with max width of 1000px */
+@media (max-width: 1000px) {
+  /* Center the .row when screen is less than or equal to 1000px */
+  .row {
+    justify-content: center; /* Center the columns horizontally */
+    align-items: center; /* Optional: align the items vertically */
+    flex-direction: column; /* Stack columns vertically */
+  }
+
+  /* Adjust column width to be more centered and responsive */
+  .col-6 {
+    width: 100%; /* Ensure columns are not too wide on smaller screens */
+    max-width: 500px; /* Optional: limit max width of columns for better readability */
+  }
+
+  /* Adjust main image height for smaller screens */
+  .main-image {
+    height: 400px;
+  }
+
+  /* Adjust sub-images size for smaller screens */
+  .sub-images {
+    justify-content: center; /* Center sub-images */
+    gap: 15px;
+  }
+
+  .sub-images img {
+    width: 20%; /* Sub-images will take up more space on mobile */
+    height: 100px; /* Adjust sub-image height */
+  }
+
+  /* Adjust product name and price font sizes */
+  .product-name {
+    font-size: 20px;
+  }
+
+  .product-price {
+    font-size: 18px;
+  }
+}
+
+/* Media query for very small mobile screens (below 480px) */
+@media (max-width: 480px) {
+    .col-6 {
+    width: 100%; /* Ensure columns are not too wide on smaller screens */
+    max-width: 400px; /* Optional: limit max width of columns for better readability */
+  }
+  .main-image {
+    height: 350px;
+  }
+
+  .sub-images img {
+    width: 20%;
+    height: 60px;
+  }
+
+  .product-name {
+    font-size: 18px;
+  }
+
+  .product-price {
+    font-size: 16px;
+  }
+}
+@media (max-width: 300px) {
+    .col-6 {
+    width: 100%; /* Ensure columns are not too wide on smaller screens */
+    max-width: 200px; /* Optional: limit max width of columns for better readability */
+  }
+  .main-image {
+    height: 200px;
+  }
+
+  .sub-images img {
+    width: 20%;
+    height: 60px;
+  }
+
+  .product-name {
+    font-size: 16px;
+  }
+
+  .product-price {
+    font-size: 14px;
+  }
+}
+
+.size-label{
+    font-size: 10px;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Style for individual size buttons */
+.size-btn {
+  padding: 12px 18px; /* Adjust padding for text to fit properly */
+  font-size: 16px;
+  background-color: black; /* Black background */
+  color: white; /* White text color */
+  border: 2px solid #000; /* Black border to make the border stand out */
+  border-radius: 20px; /* Rounded corners for the buttons */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for buttons */
+.size-btn:hover {
+  background-color: #333; /* Darker black on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional: Add a subtle shadow for hover effect */
+}
+
+/* Focus effect when button is selected */
+.size-btn:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6); /* White focus glow */
+}
+
+/* Media query for screens with max width of 310px */
+@media (max-width: 310px) {
+  .size-btn {
+    padding: 6px 10px; /* Reduce padding for smaller buttons */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  /* Optional: Reduce the gap between buttons if needed */
+  .size-buttons {
+    gap: 5px; /* Decrease the space between buttons */
+  }
+}
+@media (max-width: 215px) {
+  .size-btn {
+    padding: 4px 8px; /* Reduce padding for smaller buttons */
+    font-size: 10px; /* Smaller font size */
+  }
+
+  /* Optional: Reduce the gap between buttons if needed */
+  .size-buttons {
+    gap: 3px; /* Decrease the space between buttons */
+  }
+}
+
+.shipping-calculated {
+  font-size: 16px;
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  overflow: hidden; /* Optional: hide overflow if necessary */
+  text-overflow: ellipsis; 
+  width: f;/* Optional: add ellipsis if the text is too long for the container */
+}
+
+/* Media query for very small screens (below 300px) */
+@media (max-width: 350px) {
+  /* Reduce font size for very small screens */
+  .shipping-calculated {
+    font-size: 10px; /* Smaller font size */
+  }
+}
+@media (max-width: 265px) {
+  /* Reduce font size for very small screens */
+  .shipping-calculated {
+    font-size: 8px; /* Smaller font size */
+  }
+}
+
+.size-chart{
+    width: fit-content;
+}
+
+/* Quantity Section Styling */
+.quantity-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quantity-label {
+  font-size: 14px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+
+}
+
+.quantity-btn {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+}
+
+.quantity-btn:hover {
+  background-color: #333;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  font-size: 18px;
+  padding: 5px;
+  margin: 0 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive Styling for Quantity Section */
+@media (max-width: 480px) {
+  .quantity-btn {
+    padding: 8px 16px;
+  }
+
+  .quantity-input {
+    width: 40px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 310px) {
+  .quantity-btn {
+    padding: 6px 12px; /* Smaller padding for tighter fit */
+    font-size: 14px; /* Smaller text for the buttons */
+  }
+
+  .quantity-input {
+    width: 30px; /* Smaller width for the input */
+    font-size: 12px; /* Smaller text for the input */
+    padding: 4px; /* Reduced padding for the input */
+  }
+
+  .quantity-label {
+    font-size: 12px; /* Smaller font size for the label */
+  }
+}
+
+.add-to-cart-section {
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+}
+
+/* Responsive Styling for smaller screens */
+@media (max-width: 480px) {
+  .add-to-cart-btn {
+    font-size: 14px; /* Smaller font size on mobile */
+    padding: 12px 20px; /* Adjust padding for mobile */
+    max-width: 200px; /* Reduce max-width on smaller screens */
+  }
+}
+
+/* Extra responsiveness for very small screens (310px or below) */
+@media (max-width: 310px) {
+  .add-to-cart-btn {
+    font-size: 8px; /* Smaller font size */
+    padding: 10px 15px; /* Further reduce padding */
+    max-width: 180px; /* Further reduce the width */
+  }
+
+}
+
+.add-to-cart-btn {
+  height: 50px;
+  width: 200px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid white;
+  overflow: hidden;
+  border-radius: 20px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.add-to-cart-btn-txt {
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.type1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+  border-radius: 30px;
+  visibility: hidden;
+  height: 10px;
+  width: 10px;
+  z-index: -1;
+}
+
+.add-to-cart-btn:hover {
+  box-shadow: 1px 1px 200px white;
+  color: black;
+  border: none;
+}
+
+.type1:hover::after {
+  visibility: visible;
+  transform: scale(100) translateX(2px);
+}
+
+.you-may-like-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Product Cards Styling */
+.product-card {
+    background-color: #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* padding: 20px; */
+
+}
+
+.product-card-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-card-info {
+    margin-top: 15px;
+}
+
+.product-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-card-price {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+
+    </style>
+</head>
+
+<body class="link-body">
+    <div class="container fade-up">
+
+        <nav class="navbar-main fade-up">
+            <div class="left-icons">
+                <a href="#" class="text-white" id="openModal"><i class="fas fa-search"></i></a>
+            </div>
+
+            <div class="logo_2">
+                <a href="index.html"><img src="images/logo2.png" alt=""></a>
+            </div>
+
+            <div class="right-icons">
+                <a href="account.html" class="text-white"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="text-white"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownAll">
+                    All
+                </a>
+                <ul class="dropdown-menu bg-black" id="dropdownAllMenu">
+                    <li><a class="dropdown-item" href="products.html?category=caps&page=1" id="capsLink">CAPS</a></li>
+                    <li><a class="dropdown-item" href="products.html?category=tshirt&page=1" id="tshirtLink">T-SHIRTS</a></li>
+                    <li><a class="dropdown-item" href="products.html?category=all&page=1" id="allProductsLink">ALL PRODUCTS</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownCollection">
+                    Collections
+                </a>
+                <ul class="dropdown-menu bg-black" id="dropdownCollectionMenu">
+                    <li><a class="dropdown-item" href="#">OVERSIZED-T</a></li>
+                    <li><a class="dropdown-item" href="#">BASEBALL CAPS</a></li>
+                    <li><a class="dropdown-item" href="#">STREETWEAR SET</a></li>
+                </ul>
+            </div>
+
+            <a href="#">Limited</a>
+        </div>
+
+       
+        <div class="container-pd">
+        <div class="product-description">
+            <div class="row">
+              <!-- First column: Main product image and sub images -->
+              <div class="col-6">
+                <div class="main-image">
+                  <img src="images/card-tshirt5.jpg" alt="Main Product" class="img-fluid">
+                </div>
+                <div class="sub-images">
+                  <img src="images/card-tshirt5.jpg" alt="Sub Image 1" class="img-fluid">
+                  <img src="images/card-tshirt5.jpg" alt="Sub Image 2" class="img-fluid">
+                  <img src="images/card-tshirt5.jpg" alt="Sub Image 3" class="img-fluid">
+                </div>
+              </div>
+          
+              <!-- Second column: Product name and price -->
+              <div class="col-6 pt-2">
+                <div class="product-info">
+                  <h3 class="product-name">Featuring T-Shirt - Washed</h3>
+                  <p class="product-price">$29.99</p>
+
+                    <div class="shipping-calculated"><a class="text-white" href="">Shipping</a> calculated at checkout</div>
+
+                  <a href="#" class="size-chart text-white pt-4 ">SIZE CHART</a>
+
+                  <!-- Text size label -->
+                  <p class="size-label pt-5">Size:</p>
+
+                  <!-- Size buttons (S, M, L, XL) -->
+                  <div class="size-buttons">
+                      <button class="size-btn">S</button>
+                      <button class="size-btn">M</button>
+                      <button class="size-btn">L</button>
+                      <button class="size-btn">XL</button>
+                  </div>
+
+                  <div class="quantity-section">
+                    <p class="quantity-label">Quantity:</p>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" id="decrease">-</button>
+                        <input type="" class="quantity-input" id="quantity" value="1" min="1" />
+                        <button class="quantity-btn" id="increase">+</button>
+                    </div>
+                </div>
+
+                <div class="add-to-cart-section">
+                    <button class="add-to-cart-btn type1">
+                        <span class="add-to-cart-btn-txt">ADD TO CART</span>
+                      </button>
+                     </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="you-may-like-heading">You may also like</h2>
+            </div>
+            
+            <!-- Product Cards -->
+            <div class="col-md-3 col-6 mb-4">
+                <div class="product-card">
+                    <img src="images/card-tshirt3.jpg" alt="Product 1" class="product-card-img">
+                    <div class="product-card-info">
+                        <h4 class="product-card-title">Product 1</h4>
+                        <p class="product-card-price">$19.99</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-3 col-6 mb-4">
+                <div class="product-card">
+                    <img src="images/card-tshirt4.jpg" alt="Product 2" class="product-card-img">
+                    <div class="product-card-info">
+                        <h4 class="product-card-title">Product 2</h4>
+                        <p class="product-card-price">$24.99</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-3 col-6 mb-4">
+                <div class="product-card">
+                    <img src="images/card-cap2.jpg" alt="Product 3" class="product-card-img">
+                    <div class="product-card-info">
+                        <h4 class="product-card-title">Product 3</h4>
+                        <p class="product-card-price">$22.99</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-3 col-6 mb-4">
+                <div class="product-card">
+                    <img src="images/card-cap4.jpg" alt="Product 4" class="product-card-img">
+                    <div class="product-card-info">
+                        <h4 class="product-card-title">Product 4</h4>
+                        <p class="product-card-price">$17.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+        </div>
+   
+
+
+
+        <div class="footer-section container">
+            <label for="email-text">SUBSCRIBE TO OUR B4B SIGNUP:</label>
+            <div class="form-control-footer">
+                <input type="email" required>
+                <label>
+                    <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">n</span><span
+                        style="transition-delay:100ms">t</span><span style="transition-delay:150ms">e</span><span
+                        style="transition-delay:200ms">r</span><span style="transition-delay:250ms"></span><span
+                        style="transition-delay:300ms">e</span><span style="transition-delay:350ms">m</span><span
+                        style="transition-delay:400ms">a</span><span style="transition-delay:450ms">i</span><span
+                        style="transition-delay:500ms">l</span><span style="transition-delay:550ms"></span><span
+                        style="transition-delay:600ms">i</span><span style="transition-delay:650ms">d</span>
+                </label>
+            </div>
+        
+            <!-- Row below input with a link centered and social icons on the right -->
+            <div class="footer-row mt-5">
+                <a href="index.html" class="footer-link">@ 2024: BFORBAN CLOTHING</a>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        
+            <!-- New row for footer links centered -->
+            <div class="footer-links-row">
+                <ul class="mt-5">
+                    <li><a href="refund_policy.html" class="footer-link-bottom">Refund Policy</a></li>
+                    <li><a href="terms_of_services.html" class="footer-link-bottom">Terms of Services</a></li>
+                    <li><a href="privacy_policy.html" class="footer-link-bottom">Privacy Policy</a></li>
+                    <li><a href="shipping_policy.html" class="footer-link-bottom">Shipping Policy</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        
+
+    </div>
+
+
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content-search">
+            <span class="close" id="closeModal">&times;</span>
+            <h5 class="text-shine-modal">"FIND YOUR THREAD"</h5>
+            <input type="text" placeholder="Search...">
+            <button type="button">Search</button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        const increaseBtn = document.getElementById('increase');
+const decreaseBtn = document.getElementById('decrease');
+const quantityInput = document.getElementById('quantity');
+
+increaseBtn.addEventListener('click', () => {
+  quantityInput.value = parseInt(quantityInput.value) + 1;
+});
+
+decreaseBtn.addEventListener('click', () => {
+  if (quantityInput.value > 1) {
+    quantityInput.value = parseInt(quantityInput.value) - 1;
+  }
+});
+    </script>
+    <script src="js/scripts.js"></script>
+    <script src="js/form.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybBogGz+zWkRJixsnhRQZBs3mI1cE5Qihc95cJfM6HLFfM5bs"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-eHRCQYeF4mZ4hxLnGgEv99d/6sICnxD+5y6LP6azHxSHCJcWuKbB0I4laYFejJOE"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

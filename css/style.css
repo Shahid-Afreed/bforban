@@ -497,7 +497,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;  /* Matches the default image width */
-  height: 450px; /* Matches the default image height */
+  height: 425px; /* Matches the default image height */
   object-fit: cover; /* Ensures image fits perfectly */
   object-position: top; /* Ensures the hover image aligns with the default image */
   opacity: 0; /* Initially hidden */
@@ -534,7 +534,7 @@ html {
 @media (max-width: 500px) {
   .col-md-4 {
     width: 100% !important;
-  }
+padding-top: 20px;  }
 
   .product {
     margin-bottom: 15px;
