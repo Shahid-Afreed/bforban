@@ -1795,11 +1795,7 @@ padding-top: 20px;  }
 .shipping-depth {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* Centers content horizontally */
-  justify-content: center;
-  /* Centers content vertically */
-  text-align: center;
+
   /* Ensures text is centered */
   padding: 40px 20px;
   /* Adds padding to the section */
@@ -1821,7 +1817,6 @@ padding-top: 20px;  }
 .shipping-depth ul {
   padding-left: 0;
   /* Remove any left padding */
-  text-align: center;
   /* Align text to the left */
 }
 
@@ -1847,7 +1842,7 @@ padding-top: 20px;  }
   margin-top: 20px;
   font-weight: bold;
   text-align: left;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   text-align: center;
   /* Indent h2 */
 }
@@ -1862,7 +1857,7 @@ padding-top: 20px;  }
   .shipping-depth p {
     font-size: 0.95rem;
     /* Adjust paragraph font size for better readability */
-    padding-left: 15px;
+    /* padding-left: 15px; */
     /* Slightly reduce the padding for smaller screens */
   }
 
@@ -1875,7 +1870,7 @@ padding-top: 20px;  }
   .shipping-depth {
     max-width: 90%;
     /* Make the width more fluid for mobile */
-    padding: 20px;
+    /* padding: 20px; */
   }
 
   .shipping-depth ul li {
@@ -1886,7 +1881,7 @@ padding-top: 20px;  }
   .shipping-depth h2 {
     font-size: 1.3rem;
     /* Adjust h2 size */
-    padding-left: 10px;
+    /* padding-left: 10px; */
     /* Reduce indentation */
   }
 }
@@ -1904,7 +1899,7 @@ padding-top: 20px;  }
   }
 
   .shipping-depth ul {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     /* Further reduce the padding */
   }
 
@@ -1912,7 +1907,7 @@ padding-top: 20px;  }
   .shipping-depth {
     max-width: 95%;
     /* Almost full-width */
-    padding: 15px;
+    /* padding: 15px; */
   }
 
   .shipping-depth ul li {
