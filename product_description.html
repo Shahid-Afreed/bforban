@@ -41,6 +41,7 @@
   height: 500px; /* Fixed height for the main image */
   overflow: hidden;
   position: relative;
+  margin-bottom: 20px; /* Add space between main image and sub-images */
 }
 
 .main-image img {
@@ -49,25 +50,34 @@
   object-fit: cover; /* Ensures the image covers the container without distortion */
 }
 
-/* Sub-images styling */
+/* Sub-images container */
 .sub-images {
   display: flex;
-  padding-top: 20px;
-  justify-content: center; /* Center sub-images */
-    gap: 15px;
+  justify-content: center; 
+  gap: 15px; /* Space between sub-images */
+}
+
+/* Sub-images styling */
+.sub-images a {
+  display: block; /* Make anchor tags block-level */
+  width: 140px; /* Set a fixed width for each sub-image */
 }
 
 .sub-images img {
-  width: 15%; /* Sub images take 10% of the column width */
-  object-fit: cover;
-
+  width: 100%; /* Sub-images take 100% of their container width */
+  height: 150px; /* Set a fixed height for sub-images */
+  object-fit: cover; /* Ensures sub-images maintain aspect ratio without distortion */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Sub-images hover effect */
 .sub-images img:hover {
   transform: scale(1.2); /* Zoom in by 20% */
   z-index: 1; /* Ensure the image stays on top when hovered */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow effect for a more noticeable zoom */
 }
+
 
 /* Product info section styling */
 .product-info {
@@ -86,6 +96,62 @@
   padding-top: 15px;
 }
 
+
+@media (max-width: 1000px) {
+  .main-image {
+    height: 400px; /* Reduce height of main image for smaller screens */
+  }
+
+  .main-image img {
+    object-fit: contain; /* Adjust to 'contain' for better fit on smaller screens */
+  }
+
+  .sub-images a {
+    width: 120px; /* Reduce width of sub-images for smaller screens */
+  }
+
+  .sub-images img {
+    height: 120px; /* Reduce height of sub-images */
+  }
+}
+
+/* Media query for small mobile screens (max-width 480px) */
+@media (max-width: 480px) {
+  .main-image {
+    height: 300px; /* Reduce height of main image further for very small screens */
+  }
+
+  .main-image img {
+    object-fit: contain; /* Maintain aspect ratio and fit inside the container */
+  }
+
+  .sub-images a {
+    width: 100px; /* Reduce width of sub-images */
+  }
+
+  .sub-images img {
+    height: 100px; /* Reduce height of sub-images */
+  }
+}
+
+/* Media query for very small screens (below 300px) */
+@media (max-width: 300px) {
+  .main-image {
+    height: 200px; /* Further reduce main image height for very small screens */
+  }
+
+  .main-image img {
+    object-fit: contain; /* Maintain aspect ratio */
+  }
+
+  .sub-images a {
+    width: 80px; /* Further reduce width of sub-images */
+  }
+
+  .sub-images img {
+    height: 80px; /* Further reduce height of sub-images */
+  }
+}
 
 
 /* Media query for screens with max width of 1000px */
@@ -114,21 +180,7 @@
     align-items: center;
   }
 
-  /* Adjust main image height for smaller screens */
-  .main-image {
-    height: 400px;
-  }
-
-  /* Adjust sub-images size for smaller screens */
-  .sub-images {
-    justify-content: center; /* Center sub-images */
-    gap: 15px;
-  }
-
-  .sub-images img {
-    width: 20%; /* Sub-images will take up more space on mobile */
-    height: 100px; /* Adjust sub-image height */
-  }
+  
 
   /* Adjust product name and price font sizes */
   .product-name {
@@ -146,14 +198,6 @@
     width: 100%; /* Ensure columns are not too wide on smaller screens */
     max-width: 400px; /* Optional: limit max width of columns for better readability */
   }
-  .main-image {
-    height: 350px;
-  }
-
-  .sub-images img {
-    width: 20%;
-    height: 60px;
-  }
 
   .product-name {
     font-size: 18px;
@@ -167,14 +211,6 @@
     .col-6 {
     width: 100%; /* Ensure columns are not too wide on smaller screens */
     max-width: 200px; /* Optional: limit max width of columns for better readability */
-  }
-  .main-image {
-    height: 200px;
-  }
-
-  .sub-images img {
-    width: 20%;
-    height: 60px;
   }
 
   .product-name {
@@ -357,7 +393,7 @@
 .add-to-cart-section {
   margin-top: 20px;
   display: flex;
-  width: 100%;
+  /* width: 100%; */
 }
 
 /* Responsive Styling for smaller screens */
@@ -521,15 +557,25 @@
             <div class="row">
               <!-- First column: Main product image and sub images -->
               <div class="col-6">
+                <!-- Main image container -->
                 <div class="main-image">
-                  <img src="images/card-tshirt5.jpg" alt="Main Product" class="img-fluid">
+                  <img id="main-image" src="images/card-tshirt5.jpg" alt="Main Product" class="img-fluid">
                 </div>
+              
+                <!-- Sub-images container inside links -->
                 <div class="sub-images">
-                  <img src="images/card-tshirt5.jpg" alt="Sub Image 1" class="img-fluid">
-                  <img src="images/card-tshirt5.jpg" alt="Sub Image 2" class="img-fluid">
-                  <img src="images/card-tshirt5.jpg" alt="Sub Image 3" class="img-fluid">
+                  <a href="javascript:void(0);" onclick="changeMainImage(this)">
+                    <img src="images/card-tshirt4.jpg" alt="Sub Image 1" class="img-fluid">
+                  </a>
+                  <a href="javascript:void(0);" onclick="changeMainImage(this)">
+                    <img src="images/card-tshirt3.jpg" alt="Sub Image 2" class="img-fluid">
+                  </a>
+                  <a href="javascript:void(0);" onclick="changeMainImage(this)">
+                    <img src="images/card-tshirt6.jpg" alt="Sub Image 3" class="img-fluid">
+                  </a>
                 </div>
               </div>
+              
           
               <!-- Second column: Product name and price -->
               <div class="col-6 pt-2">
@@ -562,9 +608,9 @@
                 </div>
 
                 <div class="add-to-cart-section">
-                    <button class="add-to-cart-btn type1">
+                    <a href="cart.html"><button class="add-to-cart-btn type1">
                         <span class="add-to-cart-btn-txt">ADD TO CART</span>
-                      </button>
+                      </button></a>
                      </div>
 
                 </div>
@@ -694,6 +740,22 @@ decreaseBtn.addEventListener('click', () => {
     quantityInput.value = parseInt(quantityInput.value) - 1;
   }
 });
+
+
+    </script>
+
+    <script>
+   function changeMainImage(link) {
+  // Get the main image element
+  var mainImage = document.getElementById("main-image");
+
+  // Get the image inside the clicked link
+  var subImage = link.querySelector("img");
+
+  // Set the main image's source to the clicked sub-image's source
+  mainImage.src = subImage.src;
+}
+
     </script>
     <script src="js/scripts.js"></script>
     <script src="js/form.js"></script>

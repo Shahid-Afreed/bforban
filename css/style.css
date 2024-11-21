@@ -481,6 +481,14 @@ html {
   position: relative; /* Ensures hover image is placed over the default image */
   overflow: hidden; /* Ensure hover image stays within the image area */
 }
+.card {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  position: relative; /* Ensures hover image is placed over the default image */
+  overflow: hidden; /* Ensure hover image stays within the image area */
+}
 
 /* Default Image Styling */
 .card-img-top {
@@ -525,21 +533,100 @@ html {
 }
 
 /* Media Queries for responsiveness */
+/* Media Queries for responsiveness */
 @media (max-width: 1000px) {
   .col-md-4 {
-    width: 50% !important;
+    width: 50% !important; /* Ensure two cards in a row */
   }
 }
 
 @media (max-width: 500px) {
   .col-md-4 {
-    width: 100% !important;
-padding-top: 20px;  }
+    width: 50% !important; /* Two cards per row */
+    padding-top: 10px; /* Reduced top padding */
+  }
 
   .product {
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Adjust bottom margin */
+  }
+
+  /* Make the card a square by setting both width and height */
+  .card {
+    width: 100% !important;  /* Set width to 100% of its container */
+    height: 100% !important; /* Set height equal to width for square shape */
+    position: relative;  /* Ensures the layout behaves properly */
+  }
+
+  /* Make the image inside the card adjust to the new square shape */
+  .card-img-top, .card-img-hover {
+    width: 100%; /* Ensure the image fills the card */
+    height: 190px;
+    object-position: center; /* Center the image inside the card */
+  }
+
+  /* Hover image should also adjust to the square shape */
+  .card-img-hover {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
+    position: absolute; /* Positioned on top of the default image */
+    top: 0;
+    left: 0;
+    height: 190px;
+    width: 100%;
+  }
+
+  /* Show Hover Image on Hover */
+  .card:hover .card-img-hover {
+    opacity: 1; /* Make the hover image visible */
+    transform: scale(1.1); /* Slight zoom-in effect */
+  }
+
+  /* Reduce the title and text size for small screens */
+  .card-img-title {
+    font-size: 16px;  /* Reduced title size */
+    line-height: 1.2; /* Reduce line height for better fit */
+  }
+
+  .card-text {
+    font-size: 12px;  /* Reduced text size */
+    line-height: 1.4; /* Reduce line height for better fit */
+  }
+
+  /* Adjusting spacing for smaller screens */
+  .button-wrapper {
+    font-size: 12px;  /* Adjust button text size */
+    padding: 5px;     /* Reduced padding */
+  }
+
+  /* Optional: Add some spacing between cards when in row */
+  .col-md-4 {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
+@media (max-width: 305px) {
+  .card-img-title {
+    font-size: 12px;  /* Further reduce title size */
+    line-height: 1.1; /* Further reduce line height */
+    margin-bottom: 5px; /* Adjust spacing */
+  }
+
+  .card-text {
+    font-size: 10px;  /* Further reduce price text size */
+    line-height: 1.2; /* Reduce line height for better fit */
+    margin-bottom: 5px; /* Adjust spacing between price and button */
+  }
+
+  .button-wrapper {
+    font-size: 10px;  /* Reduce button text size */
+  }
+
+  /* Ensure padding in card body doesn't take too much space */
+  .card-body {
+    padding: 10px;  /* Adjust padding for smaller screens */
+  }
+}
+
 
 
 .btn-custom {
@@ -728,7 +815,7 @@ padding-top: 20px;  }
   color: #fff;
   text-align: center;
   width: 100%;
-  position: sticky;
+  
 }
 
 /* Label Style */
@@ -1686,15 +1773,7 @@ padding-top: 20px;  }
   overflow: hidden;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centers content vertically */
-  align-items: center; /* Centers content horizontally */
-  padding-top: 20px;
-  padding-bottom: 10px;
-  position: relative;
-}
+
 
 /* Button container styling */
 .container-collection {
@@ -1943,3 +2022,9 @@ padding-top: 20px;  }
   background-color: white;
   color: black;
 }
+
+
+
+
+/* product_description css */
+

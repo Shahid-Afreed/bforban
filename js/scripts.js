@@ -181,14 +181,19 @@ window.addEventListener('resize', () => {
         // Function to update pagination
         function updatePagination(totalPages, pageNumber) {
             // Clear existing pagination links
-            paginationContainer.innerHTML = `
-                <li class="page-item" id="prev-page">
-                    <a class="page-link-pagination" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
+            paginationContainer.innerHTML = '';
+    
+            // Add the Previous button
+            const prevPage = document.createElement('li');
+            prevPage.classList.add('page-item');
+            prevPage.setAttribute('id', 'prev-page');
+            prevPage.innerHTML = `
+                <a class="page-link-pagination" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
             `;
-            
+            paginationContainer.appendChild(prevPage);
+    
             // Create page number items dynamically
             for (let i = 1; i <= totalPages; i++) {
                 const pageItem = document.createElement('li');
@@ -200,10 +205,10 @@ window.addEventListener('resize', () => {
                 pageLink.setAttribute('href', `?category=${currentCategory}&page=${i}`);
                 pageLink.innerText = i;
                 pageItem.appendChild(pageLink);
-                paginationContainer.insertBefore(pageItem, document.getElementById('next-page'));
+                paginationContainer.appendChild(pageItem);
             }
     
-            // Add the next page button
+            // Add the Next button
             const nextPage = document.createElement('li');
             nextPage.classList.add('page-item');
             nextPage.setAttribute('id', 'next-page');
@@ -213,39 +218,29 @@ window.addEventListener('resize', () => {
                 </a>
             `;
             paginationContainer.appendChild(nextPage);
-        }
     
-        // Function to handle the "Next" button
-        function goToNextPage() {
-            if (currentPage < totalPages) {
-                currentPage++;
-                window.location.search = `?category=${currentCategory}&page=${currentPage}`;
-            }
-        }
+            // Add event listeners for "Next" and "Previous" buttons
+            document.getElementById('prev-page').addEventListener('click', function (e) {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    window.location.search = `?category=${currentCategory}&page=${currentPage}`;
+                }
+            });
     
-        // Function to handle the "Previous" button
-        function goToPreviousPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                window.location.search = `?category=${currentCategory}&page=${currentPage}`;
-            }
+            document.getElementById('next-page').addEventListener('click', function (e) {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    window.location.search = `?category=${currentCategory}&page=${currentPage}`;
+                }
+            });
         }
     
         // Initialize pagination and products
         shuffleProductsIfNeeded(); // Shuffle if needed (only once in 24 hours)
         showProductsForPage(currentCategory, currentPage); // Show products based on the category and page
         
-        // Handle pagination navigation
-        document.getElementById('next-page').addEventListener('click', function (e) {
-            e.preventDefault();
-            goToNextPage();
-        });
-        
-        document.getElementById('prev-page').addEventListener('click', function (e) {
-            e.preventDefault();
-            goToPreviousPage();
-        });
-    
         // Make sure the correct link is active on page load
         if (currentCategory === 'all') {
             setActiveLink(allProductsLink);
@@ -255,9 +250,6 @@ window.addEventListener('resize', () => {
             setActiveLink(tshirtLink);
         }
     });
-    
-    
-    
     
     // --------------------------------------------------------------------------------
 
