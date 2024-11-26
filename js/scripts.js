@@ -258,6 +258,18 @@ window.addEventListener('resize', () => {
 
    
 
+    // cart funtionalities
 
-
-    
+    document.querySelector('.plus').addEventListener('click', function () {
+        let quantityDisplay = document.querySelector('.quantity-display-cart');
+        let quantity = parseInt(quantityDisplay.textContent);
+        quantityDisplay.textContent = quantity + 1;
+      });
+  
+      document.querySelector('.minus').addEventListener('click', function () {
+        let quantityDisplay = document.querySelector('.quantity-display-cart');
+        let quantity = parseInt(quantityDisplay.textContent);
+        if (quantity > 1) {
+          quantityDisplay.textContent = quantity - 1;
+        }
+      });

@@ -2,461 +2,130 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>BeforeBan</title>
-    <style>
-/* Styling for cart-contents */
-.cart-contents {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 20px 0;
-  /* border-bottom: 1px solid white; */
-}
-
-/* Styling for cart-heading */
-.cart-heading {
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  margin: 0;
-}
-
-/* Styling for checkout-link */
-.cart-link {
-  font-size: 16px;
-  color: white;
-  font-weight: normal;
-  transition: color 0.3s ease;
-  padding-bottom: 10px;
-}
-
-/* Hover effect for the link */
-.cart-link:hover {
-  color: green;
-}
-
-/* Styling for cart-added-items container */
-.cart-added-items {
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* Styling for individual columns */
-.column-heading {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 10px;
-}
-
-/* Styling for product image */
-/* Styling for product image */
-.product-image {
-  max-width: 80px; /* Adjust the size of the image */
-  height: auto;
-  margin-right: 15px; /* Space between image and the product details */
-}
-
-/* Flex container for the product image and details (title, price, size) */
-.product-info-cart {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-  /* Align image and text vertically */
-}
-
-/* Styling for the product details container (title, price, size) */
-.product-details {
-  display: flex;
-  flex-direction: column; /* Stack the title, price, and size vertically */
-}
-
-/* Styling for product title */
-.product-cart-title {
-  font-size: 1.2rem;
-  color: white;
-  margin: 0;
-  font-weight: bold; /* Optional: make the title bold */
-}
-
-/* Styling for product price */
-.product-cart-price {
-  font-size: 1rem; /* Adjust size of the price text */
-  color: white;
-  margin-top: 5px; /* Add space above price */
-}
-
-/* Styling for product size */
-.product-cart-size {
-  font-size: 0.8rem; /* Smaller font size for size text */
-  color: white;
-  margin-top: 0; /* Add space above size text */
-}
-
-
-/* Styling for quantity button */
-.quantity-controls-cart {
-  display: flex;
-  align-items: center;
-  width: fit-content;
-}
-
-.quantity-button-cart {
-  padding: 10px;
-  font-size: 18px;
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 0 5px;
-  width: 40px; /* Make the buttons slightly larger */
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.quantity-button-cart:hover {
-  background-color:white;
-  color: black;
-}
-
-.quantity-display-cart {
-  font-size: 1.2rem;
-  color: white;
-  margin: 0 10px;
-}
-/* Styling for total amount */
-.total-amount {
-  font-size: 1.2rem;
-  color: white;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* Flexbox for the total column to align its content to the right */
-.total-column {
-  display: flex;
-  flex-direction: column; /* Stacks the heading and amount vertically */
-}
-
-/* Styling for the total column's internal container (to align both the heading and amount) */
-.total-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Align both the heading and amount to the right */
-}
-
-/* Media query for screen sizes of 770px or smaller */
-@media (max-width: 770px) {
-  .cart-added-items {
-    display: flex;
-    flex-direction: column; /* Stack columns vertically on smaller screens */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style1.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <title>BeforeBan</title>
+  <style>   
+ @media (max-width: 480px) {
+  .product-img-title{
+    flex: 1 1 100%;
+    margin-bottom: 10px;
   }
 
-  /* Adjust layout of the first two columns (Products and Quantity) */
-  .row {
+  .cart-added-items {
+    flex-direction: column;
+  }
+
+  .cart-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .quantity-section {
+    flex: 1 1 45%;
+    padding-top: 0;
     align-items: flex-start;
-    flex-wrap: wrap; /* Allow wrapping of columns */
   }
 
-  .col-6 {
-    flex: 1 1 60%; /* Takes up 60% for the products column */
-    padding-right: 10px;
+  .total-column {
+    flex: 1 1 45%;
   }
 
-  .col-4 {
-    flex: 1 1 40%; /* Takes up 40% for the quantity column */
-    display: flex;
-    flex-direction: column; /* Stack the quantity and total vertically */
-    align-items: flex-end; /* Align the quantity button at the top */
-  }
-
-  /* The quantity button will be at the end of the row, not at the bottom */
   .quantity-controls-cart {
+    width: 100%;
     display: flex;
-    justify-content: flex-start; /* Align buttons to the left */
-    margin-top: 10px;
+    justify-content: space-between;
   }
 
   .quantity-button-cart {
-    padding: 5px 10px;
-    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
-  /* The total will stay below the quantity button */
+
   .total-column {
-    display: block; /* Ensure the total is displayed below */
-    margin-top: 10px; /* Add some margin between quantity and total */
-    width: 100%; /* Stretch across the row */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
-  .total-info {
-    align-items: flex-end; /* Keep total aligned to the right */
-    margin-top: auto; /* Push total to the bottom of the column */
+  .total-amount {
+    font-size: 1rem;
   }
 
-  /* For very small screens (below 480px), adjust layout further */
-  @media (max-width: 480px) {
-    .col-6, .col-4, .col-2 {
-      flex: 1 1 100%; /* Ensure all columns take up full width */
-      margin-bottom: 10px; /* Add space between columns */
-    }
-
-    .cart-added-items {
-      flex-direction: column; /* Stack columns vertically */
-    }
-
-    /* Show Quantity button below Products column without heading */
-    .col-4 {
-      padding-top: 10px; 
-      align-items: flex-start; /* Align the quantity button at the top */
-      /* Add space between products and quantity */
-    }
-
-    .quantity-controls-cart {
-      width: 100%; /* Make the controls span the width */
-    }
-
-    .quantity-button-cart {
-      width: 40px; /* Adjust button size */
-      height: 40px;
-      font-size: 18px;
-    }
-    /* Keep total aligned to the right */
-    .total-column {
-      width: 100%;
-      margin-top: 10px;
-      display: flex;
-      justify-content: flex-end; /* Keep total at the right end */
-    }
-
-    .total-info {
-      margin-top: auto; /* Push total to the bottom of the column */
-    }
-  }
-}
-
-/* Media query for screens of 370px or smaller */
-@media (max-width: 370px) {
-  /* Move the cart link below the cart heading */
-  .cart-contents {
-    flex-direction: column; /* Stack the items vertically */
-    align-items: flex-start; /* Align to the left */
-  }
-
-  .cart-link {
-    margin-top: 10px; /* Add some space between the cart heading and the link */
-    font-size: 14px; /* Adjust the size of the cart link */
-  }
-
-  /* Adjust the product details size */
-  .product-cart-title {
-    font-size: 1rem; /* Reduce title size */
-  }
-
-  .product-cart-price {
-    font-size: 0.9rem; /* Reduce price text size */
-  }
-
-  .product-cart-size {
-    font-size: 0.7rem; /* Reduce size text size */
-  }
-
-  /* Ensure the product image is still manageable */
-  .product-image {
-    max-width: 60px; /* Reduce the size of the product image */
-    height: auto;
-  }
-
-  /* Adjust the layout of the cart added items */
   .cart-added-items {
     padding: 15px 0;
   }
 
-  /* Make quantity controls smaller */
-  .quantity-button-cart {
-    padding: 5px;
-    font-size: 14px;
-    width: 30px;
-    height: 30px;
-  }
-
   .quantity-display-cart {
-    font-size: 1rem; /* Adjust size of quantity display */
-  }
-
-  /* Adjust total column layout */
-  .total-column {
-    margin-top: 10px; /* Add space between quantity and total */
-  }
-
-  .total-amount {
-    font-size: 1rem; /* Adjust size of total amount */
-  }
-}
-.btn-delete {
-  background-color: transparent;
-  position: relative;
-  border: none;
-}
-
-.btn-delete::after {
-  content: 'delete';
-  position: absolute;
-  top: -130%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: fit-content;
-  height: fit-content;
-  background-color: rgb(168, 7, 7);
-  padding: 4px 8px;
-  border-radius: 5px;
-  transition: .2s linear;
-  transition-delay: .2s;
-  color: white;
-  text-transform: uppercase;
-  font-size: 12px;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.icon-delete {
-  transform: scale(1.2);
-  transition: .2s linear;
-}
-
-.btn-delete:hover > .icon-delete {
-  transform: scale(1.5);
-  fill: rgb(168, 7, 7); /* Icon turns red on hover */
-}
-
-.btn-delete:hover::after {
-  visibility: visible;
-  opacity: 1;
-  top: -160%;
-}
-
-.btn-delete:hover {
-  color: rgb(168, 7, 7); /* Ensure the icon color turns red when hovering over the button */
-}
-
-.checkout-btn-section {
-    align-self: flex-end; /* Align to the right side */
-    margin-top: auto; /* Pushes it to the bottom of the container */
-    /* padding: 20px; */
-    text-align: end;
-}
-
-.checkout-heading {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.checkout-description {
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-    color: white;
-}
-.checkout-description a{
-    color: white;
     font-size: 1rem;
-}
+  }
 
-.checkout-btn {
-    font-size: 0.9rem;
-    padding: 10px 80px;
-    background-color: transparent;
-    color: white;
-    border-radius: 20px;
-    border: 2px solid white;
-    text-decoration: none;
+  .total-column {
     margin-top: 10px;
-}
+  }
+} 
 
-.checkout-btn:hover {
-    background-color: white;
-    color: black;
-}
+    
 
-.checkout-btn-section {
-    align-self: flex-end; /* Default alignment to the right */
-    margin-top: auto; /* Pushes it to the bottom of the container */
-    text-align: end;
-}
-
-/* Media query for screen sizes 990px and below */
-@media screen and (max-width: 990px) {
-    .checkout-btn-section {
-        align-self: center; /* Center the section */
-        text-align: center; /* Align the text inside the section */
-        width: 100%; /* Take the full width of the container */
-    }
-}
-
-
-
-    </style>
+  
+  </style>
 </head>
 
 <body class="link-body">
-    <div class="container fade-up">
+  <div class="container fade-up">
 
-        <nav class="navbar-main fade-up">
-            <div class="left-icons">
-                <a href="#" class="text-white" id="openModal"><i class="fas fa-search"></i></a>
-            </div>
+    <nav class="navbar-main fade-up">
+      <div class="left-icons">
+        <a href="#" class="text-white" id="openModal"><i class="fas fa-search"></i></a>
+      </div>
 
-            <div class="logo_2">
-                <a href="index.html"><img src="images/logo2.png" alt=""></a>
-            </div>
+      <div class="logo_2">
+        <a href="index.html"><img src="images/logo2.png" alt=""></a>
+      </div>
 
-            <div class="right-icons">
-                <a href="account.html" class="text-white"><i class="fas fa-user"></i></a>
-                <a href="cart.html" class="text-white"><i class="fas fa-shopping-cart"></i></a>
-            </div>
-        </nav>
+      <div class="right-icons">
+        <a href="account.html" class="text-white"><i class="fas fa-user"></i></a>
+        <a href="cart.html" class="text-white"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </nav>
 
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <div class="dropdown">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownAll">
-                    All
-                </a>
-                <ul class="dropdown-menu bg-black" id="dropdownAllMenu">
-                    <li><a class="dropdown-item" href="products.html?category=caps&page=1" id="capsLink">CAPS</a></li>
-                    <li><a class="dropdown-item" href="products.html?category=tshirt&page=1" id="tshirtLink">T-SHIRTS</a></li>
-                    <li><a class="dropdown-item" href="products.html?category=all&page=1" id="allProductsLink">ALL PRODUCTS</a></li>
-                </ul>
-            </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownAll">
+          All
+        </a>
+        <ul class="dropdown-menu bg-black" id="dropdownAllMenu">
+          <li><a class="dropdown-item" href="products.html?category=caps&page=1" id="capsLink">CAPS</a></li>
+          <li><a class="dropdown-item" href="products.html?category=tshirt&page=1" id="tshirtLink">T-SHIRTS</a></li>
+          <li><a class="dropdown-item" href="products.html?category=all&page=1" id="allProductsLink">ALL PRODUCTS</a>
+          </li>
+        </ul>
+      </div>
 
-            <div class="dropdown">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownCollection">
-                    Collections
-                </a>
-                <ul class="dropdown-menu bg-black" id="dropdownCollectionMenu">
-                    <li><a class="dropdown-item" href="#">OVERSIZED-T</a></li>
-                    <li><a class="dropdown-item" href="#">BASEBALL CAPS</a></li>
-                    <li><a class="dropdown-item" href="#">STREETWEAR SET</a></li>
-                </ul>
-            </div>
+      <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownCollection">
+          Collections
+        </a>
+        <ul class="dropdown-menu bg-black" id="dropdownCollectionMenu">
+          <li><a class="dropdown-item" href="#">OVERSIZED-T</a></li>
+          <li><a class="dropdown-item" href="#">BASEBALL CAPS</a></li>
+          <li><a class="dropdown-item" href="#">STREETWEAR SET</a></li>
+        </ul>
+      </div>
 
-            <a href="#">Limited</a>
-        </div>
-<!-- 
+      <a href="#">Limited</a>
+    </div>
+    <!-- 
         <div class="cart-container">
             <h2 class="cart-heading">Your Shopping Cart Is Empty</h2>
             <a href="products.html">
@@ -498,151 +167,139 @@
                 
         </div> -->
 
-        <div class="container pb-5">
-            <div class="cart-contents">
-                <h2 class="cart-heading">Your Cart</h2>
-                <a href="checkout.html" class="cart-link">CONTINUE SHOPPING</a>
-            </div>
-           
-            <div class="cart-added-items">
-                <div class="row">
-                    <!-- First column: Products (occupies 6/12 columns) -->
-                    <div class="col-6">
-                        <h3 class="column-heading">Products</h3>
-                        <div class="cart-product">
-                            <!-- Flex container for image and product info (title, price, and size) -->
-                            <div class="product-info-cart">
-                                <img src="images/card-cap3.jpg" alt="Product Image" class="product-image">
-                                <div class="product-details">
-                                    <h4 class="product-cart-title">Ghost Shell Functional Cap</h4>
-                                    <p class="product-cart-price">RS.1999</p>
-                                    <p class="product-cart-size">Size: M</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-        
-                    <!-- Second column: Quantity -->
-                    <div class="col-4">
-                        <h3 class="column-heading">Quantity</h3>
-                        <div class="quantity-controls-cart">
-                            <button class="quantity-button-cart minus">-</button>
-                            <span class="quantity-display-cart">1</span> <!-- Default quantity display -->
-                            <button class="quantity-button-cart plus">+</button>
+    <div class="container pb-5">
+      <div class="cart-contents">
+        <h2 class="cart-heading">Your Cart</h2>
+        <a href="checkout.html" class="cart-link">CONTINUE SHOPPING</a>
+      </div>
 
-                            <div class="dlt-btn mx-2">
-                                <button class="btn-delete">
-                                    <i class="bi bi-trash icon-delete text-white"></i> 
-                                   
-                                  </button>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Third column: Total (aligned to the right) -->
-                    <div class="col-2 total-column">
-                        <div class="total-info">
-                            <h3 class="column-heading">Total</h3>
-                            <p class="total-amount">RS.1999</p>
-                        </div>
-                    </div>
+      <div class="cart-added-items">
+        <div class="row cart-row">
+          <!-- First column: Products (occupies 6/12 columns) -->
+          <div class="col-6 product-img-title">
+            <h3 class="column-heading">Products</h3>
+            <div class="cart-product">
+              <!-- Flex container for image and product info (title, price, and size) -->
+              <div class="product-info-cart">
+                <img src="images/card-cap3.jpg" alt="Product Image" class="product-image">
+                <div class="product-details">
+                  <h4 class="product-cart-title">Ghost Shell Functional Cap</h4>
+                  <p class="product-cart-price">RS.1999</p>
+                  <p class="product-cart-size">Size: M</p>
                 </div>
+              </div>
             </div>
+          </div>
 
-            <div class="checkout-btn-section">
-                <!-- Checkout Section: Heading, Paragraph, and Button -->
-                <h6 class="checkout-heading">Total Estimate Summary: <span>RS.1999</span></h6>
-                <p class="checkout-description">Taxes,Discounts and <a href="">shipping</a> calculated at checkout</p>
-                <button class="checkout-btn">
-                   CHECK OUT
-                </button>  
-             </div>
-        </div>
-        
 
-        <div class="footer-section container">
-            <label for="email-text">SUBSCRIBE TO OUR B4B SIGNUP:</label>
-            <div class="form-control-footer">
-                <input type="email" required>
-                <label>
-                    <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">n</span><span
-                        style="transition-delay:100ms">t</span><span style="transition-delay:150ms">e</span><span
-                        style="transition-delay:200ms">r</span><span style="transition-delay:250ms"></span><span
-                        style="transition-delay:300ms">e</span><span style="transition-delay:350ms">m</span><span
-                        style="transition-delay:400ms">a</span><span style="transition-delay:450ms">i</span><span
-                        style="transition-delay:500ms">l</span><span style="transition-delay:550ms"></span><span
-                        style="transition-delay:600ms">i</span><span style="transition-delay:650ms">d</span>
-                </label>
+
+          <!-- Second column: Quantity -->
+          <div class="col-4 quantity-section">
+            <h3 class="column-heading">Quantity</h3>
+            <div class="quantity-controls-cart">
+              <button class="quantity-button-cart minus">-</button>
+              <span class="quantity-display-cart">1</span> <!-- Default quantity display -->
+              <button class="quantity-button-cart plus">+</button>
+
+              <div class="dlt-btn mx-2">
+                <button class="btn-delete">
+                  <i class="bi bi-trash icon-delete text-white"></i>
+
+                </button>
+              </div>
             </div>
-        
-            <!-- Row below input with a link centered and social icons on the right -->
-            <div class="footer-row mt-5">
-                <a href="index.html" class="footer-link">@ 2024: BFORBAN CLOTHING</a>
-                <div class="social-icons">
-                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-pinterest"></i></a>
-                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
+          </div>
+
+          <!-- Third column: Total (aligned to the right) -->
+          <div class="col-2 total-column">
+            <div class="total-info">
+              <h3 class="column-heading">Total</h3>
+              <p class="total-amount">RS.1999</p>
             </div>
-        
-            <!-- New row for footer links centered -->
-            <div class="footer-links-row">
-                <ul class="mt-5">
-                    <li><a href="refund_policy.html" class="footer-link-bottom">Refund Policy</a></li>
-                    <li><a href="terms_of_services.html" class="footer-link-bottom">Terms of Services</a></li>
-                    <li><a href="privacy_policy.html" class="footer-link-bottom">Privacy Policy</a></li>
-                    <li><a href="shipping_policy.html" class="footer-link-bottom">Shipping Policy</a></li>
-                </ul>
-            </div>
-            
+          </div>
         </div>
-        
-        
+      </div>
+
+      <div class="checkout-btn-section">
+        <!-- Checkout Section: Heading, Paragraph, and Button -->
+        <h6 class="checkout-heading">Total Estimate Summary: <span>RS.1999</span></h6>
+        <p class="checkout-description">Taxes,Discounts and <a href="">shipping</a> calculated at checkout</p>
+        <button class="checkout-btn">
+          CHECK OUT
+        </button>
+      </div>
+    </div>
+
+
+    <div class="footer-section container">
+      <label for="email-text">SUBSCRIBE TO OUR B4B SIGNUP:</label>
+      <div class="form-control-footer">
+        <input type="email" required>
+        <label>
+          <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">n</span><span
+            style="transition-delay:100ms">t</span><span style="transition-delay:150ms">e</span><span
+            style="transition-delay:200ms">r</span><span style="transition-delay:250ms"></span><span
+            style="transition-delay:300ms">e</span><span style="transition-delay:350ms">m</span><span
+            style="transition-delay:400ms">a</span><span style="transition-delay:450ms">i</span><span
+            style="transition-delay:500ms">l</span><span style="transition-delay:550ms"></span><span
+            style="transition-delay:600ms">i</span><span style="transition-delay:650ms">d</span>
+        </label>
+      </div>
+
+      <!-- Row below input with a link centered and social icons on the right -->
+      <div class="footer-row mt-5">
+        <a href="index.html" class="footer-link">@ 2024: BFORBAN CLOTHING</a>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-pinterest"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- New row for footer links centered -->
+      <div class="footer-links-row">
+        <ul class="mt-5">
+          <li><a href="refund_policy.html" class="footer-link-bottom">Refund Policy</a></li>
+          <li><a href="terms_of_services.html" class="footer-link-bottom">Terms of Services</a></li>
+          <li><a href="privacy_policy.html" class="footer-link-bottom">Privacy Policy</a></li>
+          <li><a href="shipping_policy.html" class="footer-link-bottom">Shipping Policy</a></li>
+        </ul>
+      </div>
 
     </div>
 
 
 
-    <!-- Search Modal -->
-    <div id="searchModal" class="modal">
-        <div class="modal-content-search">
-            <span class="close" id="closeModal">&times;</span>
-            <h5 class="text-shine-modal">"FIND YOUR THREAD"</h5>
-            <input type="text" placeholder="Search...">
-            <button type="button">Search</button>
-        </div>
+  </div>
+
+
+
+  <!-- Search Modal -->
+  <div id="searchModal" class="modal">
+    <div class="modal-content-search">
+      <span class="close" id="closeModal">&times;</span>
+      <h5 class="text-shine-modal">"FIND YOUR THREAD"</h5>
+      <input type="text" placeholder="Search...">
+      <button type="button">Search</button>
     </div>
+  </div>
 
 
 
 
-    <script>
-        document.querySelector('.plus').addEventListener('click', function() {
-  let quantityDisplay = document.querySelector('.quantity-display-cart');
-  let quantity = parseInt(quantityDisplay.textContent);
-  quantityDisplay.textContent = quantity + 1;
-});
+  <script>
+  
+  </script>
 
-document.querySelector('.minus').addEventListener('click', function() {
-  let quantityDisplay = document.querySelector('.quantity-display-cart');
-  let quantity = parseInt(quantityDisplay.textContent);
-  if (quantity > 1) {
-    quantityDisplay.textContent = quantity - 1;
-  }
-});
-    </script>
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts1.js"></script>
 
-    <script src="js/scripts.js"></script>
-    <script src="js/form.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz4fnFO9gybBogGz+zWkRJixsnhRQZBs3mI1cE5Qihc95cJfM6HLFfM5bs"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-eHRCQYeF4mZ4hxLnGgEv99d/6sICnxD+5y6LP6azHxSHCJcWuKbB0I4laYFejJOE"
-        crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz4fnFO9gybBogGz+zWkRJixsnhRQZBs3mI1cE5Qihc95cJfM6HLFfM5bs"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-eHRCQYeF4mZ4hxLnGgEv99d/6sICnxD+5y6LP6azHxSHCJcWuKbB0I4laYFejJOE"
+    crossorigin="anonymous"></script>
 
 </body>
 

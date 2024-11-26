@@ -184,6 +184,8 @@ html {
 }
 
 
+
+
 /* ---------------product css----------------- */
 .link-body {
   background-color: #000;
@@ -195,7 +197,7 @@ html {
 .fade-up {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeUpAnimation 1.5s ease-out forwards;
+  animation: fadeUpAnimation 2.5s ease-out forwards;
 }
 
 @keyframes fadeUpAnimation {
@@ -2027,4 +2029,3 @@ html {
 
 
 /* product_description css */
-
