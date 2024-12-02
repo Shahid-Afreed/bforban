@@ -420,6 +420,7 @@
   margin-bottom: 20px;
 }
 
+/* ---------------------------------------------------------------------------------------- */
 
 
 /* cart css */
@@ -812,10 +813,697 @@
     margin-top: 10px;
   }
 }  */
+.checkout-modal {
+  display: none; /* Initially hide the modal */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0); /* Start with scale 0 (invisible) */
+  transition: transform 0.3s ease-out; /* Smooth expanding effect */
+}
+
+.checkout-modal.show {
+  display: flex; /* Show modal */
+  transform: scale(1); /* Expand to full size */
+}
+
+.checkout-modal-content {
+  /* background-color: rgb(0, 0, 0); */
+  /* padding: 20px; */
+  border-radius: 20px;
+  width: 100%; /* Adjust the width of the modal */
+  max-width: 1000px; /* Maximum width for the modal */
+  text-align: left;
+  box-shadow: 0px 5px 40px white; /* White box shadow */
+}
+
+/* Checkout modal header */
+.checkout-modal-header {
+  display: flex;
+  justify-content: space-between; /* Space between heading and close button */
+  align-items: center;
+  width: 100%;
+  padding-bottom: 10px; /* Ensures full width for the header */
+}
+
+/* Left Column Heading */
+.left-col-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin: 0 auto; /* Center the heading */
+  text-align: center; /* Ensure heading is centered */
+  flex: 1; /* Allow heading to grow and be centered */
+}
+
+/* Close Button (Back Arrow) */
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-btn i {
+  font-size: 24px; /* Adjust size for the arrow */
+  color: white; /* White arrow color */
+}
+
+/* Checkout Row */
+.checkout-row {
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 20px; */
+}
+
+/* Checkout Left Column */
+.checkout-left-col {
+  padding: 20px;
+  /* background-color: black; Black background for the left column */
+  color: white; /* White text color */
+  border-radius: 5px;
+  width: 60%;
+}
+
+/* Order Summary Box Hover Effect */
+
+.order-summary-box {
+  padding: 15px;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border: 1px solid white;
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+
+  overflow: hidden; /* Ensure the effect stays within the box */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* Soft outer glow */
+}
+
+/* Reflection or glowing light effect */
+.order-summary-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgb(255, 255, 255), rgba(255, 255, 255, 0.2));
+  animation: reflect 10s infinite linear;
+  pointer-events: none; /* Ensure the effect doesn't interfere with interaction */
+}
+
+/* Continuous movement of the reflection */
+@keyframes reflect {
+  0% {
+    transform: translateX(-100%) translateY(-100%); /* Start position (top-left) */
+  }
+  50% {
+    transform: translateX(100%) translateY(100%); /* Move diagonally (bottom-right) */
+  }
+  100% {
+    transform: translateX(-100%) translateY(-100%); /* Reset to start position (top-left) */
+  }
+}
+
+.order-summary-box:hover {
+  background-color: white; /* Change background on hover */
+  transform: translateY(-5px);
+  color: black; /* Slightly lift the box */
+}
+
+/* Order Summary Section with flex */
+.order-summary {
+  display: flex;
+  justify-content: space-between; /* Spread out items to the left and right */
+  align-items: center;
+}
+
+.summary-left {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.summary-right {
+  font-size: 12px;
+  font-weight: normal;
+  text-align: right; /* Align "1 Item" text to the right */
+}
+
+/* Price Section */
+.price-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.price-left {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.price-right {
+  font-size: 18px;
+}
+
+.price-right i {
+  font-size: 24px; /* Adjust the size of the arrow */
+  color: #28a745; /* Green color for the arrow */
+}
+
+/* GST Number and Add Button Section */
+.gst-add-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.gst-number {
+  font-size: 14px;
+  color: gray;
+}
+
+.add-btn {
+  /* padding: 6px 12px; */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+
+}
+
+.add-btn:hover {
+  color: green;
+}
+
+/* From Uiverse.io by alexruix */ 
+.input-group-gst {
+  position: relative;
+ }
+ 
+ .input-gst {
+  border: solid 1.5px #9e9e9e;
+  width: 100%;
+  border-radius: 5px;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #f5f5f5;
+  transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+ }
+ 
+ .user-label-gst {
+  position: absolute;
+  left: 15px;
+  color: #e8e8e8;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: 150ms cubic-bezier(0.4,0,0.2,1);
+ }
+ 
+ .input-gst:focus, input-gst:valid {
+  outline: none;
+  border: 1.5px solid white;
+ }
+ 
+ .input-gst:focus ~ label, input-gst:valid ~ label {
+  transform: translateY(-50%) scale(0.8);
+  background-color: black;
+  padding: 0 .2em;
+  color: white;
+ }
+
+ .collapse-section {
+  display: block; /* Initially set it to block to avoid layout issues */
+  padding-top: 10px;
+  border-top: 2px solid white;
+  opacity: 0; /* Start with no visibility */
+  height: 0; /* Start with no height */
+  overflow: hidden; /* Hide content when collapsed */
+  transition: opacity 3s ease, height 0.5s ease; /* Smooth transition for opacity and height */
+}
+
+/* Show class makes the content visible and expandable */
+.collapse-section.show {
+  opacity: 1; /* Fade in */
+  height: auto; /* Let the content expand naturally */
+}
+
+.collapse-content {
+  /* background-color: black; */
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+}
+.collapse-content-ordersummary{
+background-color:rgba(0, 0, 0, 0.644);
+color: #000;
+}
+
+/* Checkout Right Column */
+.checkout-right-col {
+  padding: 10px;
+  /* background-color: #ffffff41; */
+  border-radius: 5px;
+  width: 100%;
+  /* margin-top: 20px; */
+  /* max-height: 500px;  */
+}
+
+
+/* Order Details Container */
+.order-details {
+  display: flex;
+  flex-direction: column; /* Stack order item, subtotal, and taxes vertically */
+  width: 100%;
+  margin-bottom: 10px; /* Optional: Add spacing between rows */
+}
+
+/* Left side: Product name, quantity, price, Subtotal, and Taxes */
+.order-details-left {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  width: 100%;
+}
+
+/* Order item: Product name, price */
+.order-item {
+  display: flex;
+  justify-content: space-between; /* Space between name and price */
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.item-name {
+  font-size: 16px;
+  font-weight: bold;
+  color:white;
+}
+
+.item-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: white; 
+}
+
+
+
+/* Quantity section below item-name */
+.item-quantity {
+  font-size: 12px;
+  color: white; /* Lighter color for quantity */
+  margin-top: 0px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey; /* Optional: Add spacing between item rows */
+  /* Space between quantity and item name */
+}
+
+/* Subtotal and Taxes section */
+.checkout-subtotal,
+.checkout-taxes {
+  display: flex;
+  justify-content: space-between; /* Align text and price */
+  margin-bottom: 10px; /* Spacing between rows */
+}
+
+.checkout-subtotal-text,
+.checkout-taxel {
+  font-size: 16px;
+  font-weight: bold;
+  color: gray; /* Text color for Subtotal and Taxes */
+}
+
+.checkout-subtotal-price,
+.checkout-taxes-text {
+  font-size: 12px;
+  font-weight: bold;
+  color:white;
+  border-bottom: 1px solid grey; /* Optional: Add spacing between item rows */
+  /* Price color for Subtotal and Taxes */
+}
+
+@media (max-width: 350px) {
+  .order-item {
+    flex-direction: column; /* Stack item-name and item-price vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .item-price {
+    margin-left: 0; /* Remove margin for price */
+    margin-top: 5px; /* Add space between item-name and item-price */
+  }
+
+  .checkout-subtotal,
+  .checkout-taxes {
+    flex-direction: column; /* Stack Subtotal and Taxes vertically */
+    align-items: flex-start; /* Align text and price to the left */
+  }
+
+  .checkout-subtotal-price,
+  .checkout-taxes-text {
+    margin-top: 5px; /* Space between text and price */
+  }
+}
+
+/* Checkout modal layout for smaller screens */
+@media (max-width: 768px) {
+  .checkout-modal-content {
+    width: 90%; /* Smaller width on mobile */
+    max-width: 600px; /* Smaller maximum width for mobile devices */
+  }
+
+  .order-details {
+    flex-direction: column; /* Stack left and right columns vertically */
+  }
+  .order-details-left {
+    width: 100%; /* Full width for each column when stacked */
+  }
+}
+
+/* Checkout modal layout for screens less than 1000px */
+@media (max-width: 900px) {
+  .checkout-row {
+    display: flex;
+    flex-direction: column; /* Stack the columns vertically */
+  }
+
+  .checkout-left-col,
+  .checkout-right-col {
+    width: 100%; /* Make each column take the full width */
+    /* margin-bottom: 20px; */
+    height: fit-content; /* Add space between the two stacked columns */
+  }
+
+  /* Adjust modal width when columns are stacked */
+  .checkout-modal-content {
+    width: 90%; /* Reduce modal width to 90% */
+    max-width: 700px; /* Maximum width of the modal when stacking columns */
+  }
+
+  /* .collapse-content-ordersummary{
+    background-color:rgba(0, 0, 0, 0.644);
+  } */
+}
+
+
+
+
+/* From Uiverse.io by Satwinder04 */ 
+/* Input container */
+.input-container-gst {
+  position: relative;
+  margin: 20px;
+}
+
+/* Input field */
+.input-field-gst {
+  display: block;
+  width: 100%;
+  /* padding: 10px; */
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid grey;
+  outline: none;
+  background-color: transparent;
+  color: white;
+}
+
+/* Input label */
+.input-label-gst {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  color: rgba(204, 204, 204, 0);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Input highlight */
+.input-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Input field:focus styles */
+.input-field-gst:focus + .input-label-gst {
+  top: -20px;
+  font-size: 12px;
+  color:white;
+}
+
+.input-field-gst:focus + .input-label-gst + .input-highlight {
+  width: 100%;
+}
 
 
 
 
 
+/* Basic layout styling */
 
+.checkout-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: nowrap; /* Prevent wrapping of tabs into multiple lines */
+  /* overflow-x: auto;  */
+}
 
+.checkout-tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin: 0 10px; /* Reduced space between the tabs */
+  text-align: center; /* Center text in each tab */
+}
+
+.checkout-tab.active {
+  color: green;  /* Active tab in green */
+  transform: scale(1.2); /* Zoom effect on active tab */
+  font-weight: bold; /* Make the active tab bold */
+}
+
+.tab-content {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 0 0 5px 5px;
+}
+
+.tab-panel {
+  display: none;
+  width: 100%;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Checkout Info - Updated Class for Contact Tab */
+.checkout-info-contact {
+  text-align: center; /* Center the text inside */
+  padding: 20px;
+  max-width: 500px; /* Optional: Limit the width of the content for better readability */
+  margin: 0 auto; /* Center it horizontally */
+}
+
+.checkout-info-contact h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.contact-head{
+  font-size: 22px;
+}
+.contact-head-text{
+  font-size: 14px;
+}
+
+.checkout-info-contact p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Form Fields */
+.contact-checkout-form-group {
+    margin-bottom: 15px;
+}
+
+.contact-checkout-form-group input[type="tel"],
+.contact-checkout-form-group input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.contact-checkout-form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Mobile Input Styles */
+.mobile-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.country-code {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    width: 20%; /* Control the size of the country code dropdown */
+    text-align: center;
+}
+
+.mobile-input input[type="tel"] {
+    width: 80%;  /* Remaining width of the input field */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Email Input */
+.contact-checkout-form-group input[type="email"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* Continue Button */
+.continue-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.continue-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Contact Tab Panel Specific Styles */
+.contact-tab-panel .form-group input[type="tel"],
+.contact-tab-panel .form-group input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Address and Payment Tab Panel (Customize later) */
+.address-tab-panel,
+.payment-tab-panel {
+  padding: 20px;
+}
+
+.address-tab-panel h2,
+.payment-tab-panel h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.address-tab-panel p,
+.payment-tab-panel p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Make tabs always stay in one row */
+  .checkout-tabs {
+    flex-wrap: nowrap; /* Ensure no wrapping */
+    /* overflow-x: auto;  */
+  }
+
+  .checkout-tab {
+    font-size: 16px; /* Smaller font size for tabs */
+    padding: 8px 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Adjust font size of tab content */
+  .checkout-info-contact h2 {
+    font-size: 20px;
+  }
+
+  .checkout-info-contact p {
+    font-size: 14px;
+  }
+
+  .form-group input[type="tel"],
+  .form-group input[type="email"] {
+    font-size: 14px; /* Smaller text in inputs */
+  }
+
+  .continue-btn {
+    font-size: 14px; /* Smaller button text */
+    padding: 8px 16px; /* Adjust button size for mobile */
+  }
+}
+
+/* Extra Small Screen Adjustments (max-width: 480px) */
+@media (max-width: 480px) {
+  .checkout-tabs {
+    flex-wrap: nowrap; /* Ensure tabs stay in one row */
+    /* overflow-x: auto;   } */
+
+  .checkout-tab {
+    font-size: 14px; /* Even smaller font size for smaller screens */
+    padding: 6px 12px; /* Adjust padding for very small screens */
+  }
+
+  .tab-content {
+    padding: 15px; /* Reduced padding for small screens */
+  }
+
+  .checkout-info-contact h2 {
+    font-size: 18px; /* Adjust heading size for mobile */
+  }
+
+  .checkout-info-contact p {
+    font-size: 12px; /* Adjust paragraph size for mobile */
+  }
+
+  .form-group input[type="tel"],
+  .form-group input[type="email"] {
+    font-size: 14px; /* Smaller input text */
+  }
+
+  .continue-btn {
+    font-size: 14px; /* Adjust button font size */
+    padding: 8px 16px;
+  }
+}
+
+}

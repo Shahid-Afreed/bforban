@@ -74,6 +74,14 @@
   }
 } 
 
+
+.checkout-modal-content{
+  background-image: url('images/checkout.jpg'); /* Set the background image */
+  background-size: cover; /* Ensures the background covers the entire modal content */
+  background-position: center; 
+  /* filter: brightness(80%); */
+}
+
     
 
   
@@ -170,7 +178,7 @@
     <div class="container pb-5">
       <div class="cart-contents">
         <h2 class="cart-heading">Your Cart</h2>
-        <a href="checkout.html" class="cart-link">CONTINUE SHOPPING</a>
+        <a href="products.html" class="cart-link">CONTINUE SHOPPING</a>
       </div>
 
       <div class="cart-added-items">
@@ -224,11 +232,188 @@
         <!-- Checkout Section: Heading, Paragraph, and Button -->
         <h6 class="checkout-heading">Total Estimate Summary: <span>RS.1999</span></h6>
         <p class="checkout-description">Taxes,Discounts and <a href="">shipping</a> calculated at checkout</p>
-        <button class="checkout-btn">
+        <button class="checkout-btn" id="checkoutBtn">
           CHECK OUT
         </button>
       </div>
+
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal">
+      <div class="checkout-modal-content">
+       
+    
+        <div class="checkout-row">
+          <!-- Checkout Left Column -->
+          <div class="checkout-left-col">
+            <div class="checkout-modal-header">
+              <!-- Back Arrow Button -->
+              <button class="close-btn" id="closeModalBtn">
+                <i class="bi bi-arrow-left"></i> <!-- Back arrow icon -->
+              </button>
+        
+              <!-- Heading Centered -->
+              <h2 class="left-col-heading  text-shine ">BFORBAN CLOTHING</h2>
+            </div>
+            <!-- Order Summary Box with hover effect -->
+            <div class="order-summary-box" id="orderSummaryBox">
+              <div class="order-summary">
+                <div class="summary-left">Order Summary</div>
+                <div class="summary-right">1 Item</div>
+              </div>
+    
+              <div class="price-section">
+                <div class="price-left">Total: RS.1999</div>
+                <div class="price-right">
+                  <span><i class="bi bi-arrow-right"></i></span>
+                </div>
+              </div>
+
+             
+            </div>
+    
+            <!-- Collapsible section for Order Summary -->
+            <div class="collapse-section" id="collapseOrderSummary">
+              <div class="collapse-content collapse-content-ordersummary">
+                <!-- Order Details -->
+                <div class="order-details">
+                  <div class="order-details-left">
+                    <!-- Order item with product name, quantity, and price -->
+                    <div class="order-item">
+                      <div class="item-name">OPIUM-TSHIRT</div> <!-- Product name -->
+                      <div class="item-price">Rs. 1999</div> <!-- Item price, aligned right -->
+                    </div>
+                    
+                    <!-- Quantity displayed below the item name -->
+                    <div class="item-quantity">Qty: 1</div> <!-- Quantity displayed below item name -->
+                    
+                    <!-- Subtotal Row -->
+                    <div class="checkout-subtotal pt-3">
+                      <span class="checkout-subtotal-text">Subtotal</span>
+                      <span class="checkout-subtotal-price">Rs. 1999</span>
+                    </div>
+                    
+                    <!-- Taxes Row -->
+                    <div class="checkout-taxes">
+                      <span class="checkout-taxel">Taxes</span>
+                      <span class="checkout-taxes-text">To be calculated</span>
+                    </div>
+                    <br>
+
+                    <div class="order-item">
+                      <div class="item-name">GRAND TOTAL</div> <!-- Product name -->
+                      <div class="item-price">Rs. 1999</div> <!-- Item price, aligned right -->
+                    </div>
+
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+    
+            <!-- GST Number and Add Button Section -->
+            <div class="gst-add-section">
+              <div class="gst-number">GST Number: 1234567890</div>
+              <button class="add-btn" id="addGSTBtn"><i class="bi bi-plus-circle"></i></button>
+            </div>
+
+          
+    
+            <!-- Collapsible section for GST Add -->
+            <div class="collapse-section" id="collapseGSTAdd">
+              <div class="collapse-content">
+                <div class="input-container-gst">
+                  <input placeholder="Enter 15 digit GSTIN" class="input-field-gst" type="text">
+                  <label for="input-field" class="input-label-gst">Enter</label>
+                  <span class="input-highlight"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Checkout Right Column -->
+          <div class="checkout-right-col">
+            <!-- Tab Navigation -->
+            <div class="checkout-tabs">
+                <div class="checkout-tab active" id="contactTab">Contact</div>
+                <div class="checkout-tab" id="addressTab">Address</div>
+                <div class="checkout-tab" id="paymentTab">Payment</div>
+            </div>
+        
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Contact Tab Content -->
+                <div class="contact-tab-panel tab-panel active" id="contactContent">
+                    <div class="checkout-info">
+                        <h2 class="contact-head">Contact Details</h2>
+                        <p class="contact-head-text">Enter your email and mobile number to continue</p>
+        
+                        <!-- Contact Form -->
+                        <form id="contactForm">
+                          <div class="contact-checkout-form-group">
+                              <div class="mobile-input">
+                                  <select id="countryCode" name="countryCode" class="country-code">
+                                      <option value="+1">+1</option> <!-- Example country code -->
+                                      <option value="+44">+44</option>
+                                      <option value="+91">+91</option>
+                                      <!-- Add more country codes as needed -->
+                                  </select>
+                                  <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required pattern="[0-9]*" inputmode="numeric">
+                              </div>
+                          </div>
+                          
+                          <div class="contact-checkout-form-group">
+                              <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                          </div>
+                          
+                          <div class="contact-checkout-form-group">
+                              <label for="subscribe">
+                                  <input type="checkbox" id="subscribe" name="subscribe">
+                                  Subscribe to newsletters
+                              </label>
+                          </div>
+                          
+                          <button type="submit" class="continue-btn">Continue</button>
+                      </form>
+                      
+                    </div>
+                </div>
+        
+                <!-- Address Tab Content -->
+                <div class="address-tab-panel tab-panel" id="addressContent">
+                    <div class="checkout-info">
+                        <h2>Address Details</h2>
+                        <p>Enter your delivery address</p>
+                        <!-- Address fields go here -->
+                    </div>
+                </div>
+        
+                <!-- Payment Tab Content -->
+                <div class="payment-tab-panel tab-panel" id="paymentContent">
+                    <div class="checkout-info">
+                        <h2>Payment Details</h2>
+                        <p>Choose your payment method</p>
+                        <!-- Payment fields go here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+      </div>
     </div>
+    
+    
+    
+    
+    
+    </div>
+
+
+
+
+
+
 
 
     <div class="footer-section container">

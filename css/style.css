@@ -2025,7 +2025,27 @@ html {
   color: black;
 }
 
+.contact-input {
+    background-color: black;
+    color: white; /* Text color */
+    border: 1px solid white; /* White border */
+    outline: none;
+    padding: 10px; /* Add some padding to the inputs */
+    font-size: 16px;
+    border-radius: 10px; /* Optional: Adjust font size */
+}
 
+/* Placeholder text color */
+.contact-input::placeholder {
+    color: rgba(255, 255, 255, 0.348); /* White placeholder text */
+}
 
-
-/* product_description css */
+/* Focus state for inputs */
+.contact-input:focus {
+    color: white;
+    background-color: black;
+    outline-color: white;
+    box-shadow: -3px -3px 20px white;
+    transition: .1s;
+    transition-property: box-shadow;
+}

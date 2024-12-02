@@ -273,3 +273,99 @@ window.addEventListener('resize', () => {
           quantityDisplay.textContent = quantity - 1;
         }
       });
+
+
+    // Function to show the modal
+// Function to show the modal
+function showModal() {
+    const modal = document.querySelector('.checkout-modal'); // Select the modal element
+    modal.style.display = 'flex'; // Show the modal (set display to flex)
+    setTimeout(() => {
+        modal.classList.add('show'); // Apply the expanding effect after the modal is displayed
+    }, 10); // Add a small delay to trigger the transition
+}
+
+// Function to hide the modal when the close button is clicked
+function hideModal() {
+    const modal = document.querySelector('.checkout-modal'); // Select the modal element
+    modal.classList.remove('show'); // Remove the expanding effect
+    setTimeout(() => {
+        modal.style.display = 'none'; // Hide the modal after the transition ends
+    }, 300); // Match this duration with the transition time
+}
+
+// Event listener for the checkout button
+const checkoutBtn = document.getElementById('checkoutBtn');
+checkoutBtn.addEventListener('click', showModal); // Show modal on checkout button click
+
+// Event listener for the modal close button (assuming there's a close button inside modal)
+const closeModalBtn = document.getElementById('closeModalBtn');
+closeModalBtn.addEventListener('click', hideModal); // Close modal on close button click
+
+// Collapse functionality for Order Summary Box
+const orderSummaryBox = document.getElementById('orderSummaryBox');
+const collapseOrderSummary = document.getElementById('collapseOrderSummary');
+
+// Event listener to toggle the Order Summary collapsible section
+orderSummaryBox.addEventListener('click', () => {
+    collapseOrderSummary.classList.toggle('show');
+});
+
+// Collapse functionality for GST Add Section
+const addGSTBtn = document.getElementById('addGSTBtn');
+const collapseGSTAdd = document.getElementById('collapseGSTAdd');
+
+// Event listener to toggle the GST Add collapsible section
+addGSTBtn.addEventListener('click', () => {
+    collapseGSTAdd.classList.toggle('show');
+});
+
+// Close the modal if user clicks outside of the modal content
+window.addEventListener('click', function(event) {
+    const modal = document.querySelector('.checkout-modal');
+    if (event.target === modal) {
+        hideModal(); // Close the modal if user clicks outside of modal content
+    }
+});
+
+
+// Tab Switching Logic
+document.getElementById("contactTab").addEventListener("click", function() {
+    showTab("contactContent");
+});
+document.getElementById("addressTab").addEventListener("click", function() {
+    showTab("addressContent");
+});
+document.getElementById("paymentTab").addEventListener("click", function() {
+    showTab("paymentContent");
+});
+
+function showTab(tabId) {
+    // Hide all tabs and panels
+    const tabs = document.querySelectorAll(".checkout-tab");
+    const panels = document.querySelectorAll(".tab-panel");
+
+    tabs.forEach(tab => tab.classList.remove("active"));
+    panels.forEach(panel => panel.classList.remove("active"));
+
+    // Show the clicked tab and the corresponding content
+    document.getElementById(tabId).classList.add("active");
+    document.querySelector(`#${tabId.replace('Content', 'Tab')}`).classList.add("active");
+}
+
+
+// Get the select dropdown and mobile input field
+const countryCodeSelect = document.getElementById('countryCode');
+const mobileInput = document.getElementById('mobile');
+
+// Add an event listener for when the user selects a country code
+countryCodeSelect.addEventListener('change', function() {
+    // Set the value of the mobile input to include the selected country code
+    mobileInput.value = countryCodeSelect.value + ' ';  // Add a space after the country code for better UX
+});
+
+// Initialize the mobile input with the default selected country code
+mobileInput.value = countryCodeSelect.value + ' ';
+
+
+      
