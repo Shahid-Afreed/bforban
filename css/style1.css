@@ -849,7 +849,7 @@
   justify-content: space-between; /* Space between heading and close button */
   align-items: center;
   width: 100%;
-  padding-bottom: 10px; /* Ensures full width for the header */
+  padding-bottom: 20px; /* Ensures full width for the header */
 }
 
 /* Left Column Heading */
@@ -1173,7 +1173,13 @@ color: #000;
   .checkout-taxes-text {
     margin-top: 5px; /* Space between text and price */
   }
+
+  .left-col-heading{
+   font-size: 20px; 
+  }
 }
+
+
 
 /* Checkout modal layout for smaller screens */
 @media (max-width: 768px) {
@@ -1291,7 +1297,8 @@ color: #000;
   font-size: 14px;
   transition: all 0.3s ease;
   margin: 0 10px; /* Reduced space between the tabs */
-  text-align: center; /* Center text in each tab */
+  text-align: center; 
+  color: #ffffff59;/* Center text in each tab */
 }
 
 .checkout-tab.active {
@@ -1341,75 +1348,162 @@ color: #000;
 }
 
 /* Form Fields */
+/* General Form Styles */
 .contact-checkout-form-group {
-    margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .contact-checkout-form-group input[type="tel"],
-.contact-checkout-form-group input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.contact-checkout-form-group input[type="checkbox"] {
-    margin-right: 10px;
+.contact-checkout-form-group input[type="email"],
+.contact-checkout-form-group select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 /* Mobile Input Styles */
 .mobile-input {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.country-code {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px 0 0 5px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    width: 20%; /* Control the size of the country code dropdown */
-    text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
 }
 
 .mobile-input input[type="tel"] {
-    width: 80%;  /* Remaining width of the input field */
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 0 5px 5px 0;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  background-color: #f4f4f4;
+  transition: background-color 0.3s ease;
+  color: #333;
+  padding-left: 50px; /* Padding on left for country code dropdown */
 }
 
-/* Email Input */
-.contact-checkout-form-group input[type="email"] {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
+.mobile-input input[type="tel"]:focus {
+  background-color: #fde3e3; /* Light blue background on focus */
+  outline: none;
 }
 
-/* Continue Button */
+/* Country Code Wrapper and Arrow */
+.country-code-wrapper {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  padding-left: 10px; /* Space for the arrow */
+  z-index: 1;
+}
+
+.country-code-wrapper select {
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 5px;
+  font-family: inherit;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+/* Premium Button Styles */
 .continue-btn {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+  background-color: black;
+  color: white;
+  padding: 14px 25px;
+  border: 1px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%; /* Make button full width on mobile */
 }
 
 .continue-btn:hover {
-    background-color: #2980b9;
+  background-color: white;
+  color: black;
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
+
+.continue-btn:active {
+  background-color: black;
+  color: white;
+}
+
+/* Focus/Active States for Form Inputs */
+.contact-checkout-form-group input[type="tel"]:focus,
+.contact-checkout-form-group input[type="email"]:focus,
+.contact-checkout-form-group select:focus {
+  border-color: white;
+  box-shadow: 0 0 5px white; /* Blue shadow on focus */
+  outline: none;
+}
+
+
+.contct-icon{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .mobile-input {
+      flex-direction: column; /* Stack country code and mobile input on top of each other */
+  }
+
+  .country-code-wrapper select {
+      width: 100%;  /* Full width on smaller screens */
+  }
+
+  .mobile-input input[type="tel"] {
+      width: 100%;
+  }
+
+  .continue-btn {
+      padding: 14px 25px;
+      font-size: 18px;
+      width: 100%; /* Full width button on mobile */
+  }
+
+  .contact-checkout-form-group input[type="tel"],
+  .contact-checkout-form-group input[type="email"],
+  .contact-checkout-form-group select {
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}
+
+/* Extra Small Screen Adjustments (max-width: 480px) */
+@media (max-width: 480px) {
+  .mobile-input {
+      flex-direction: column; /* Stack inputs vertically */
+  }
+
+  .country-code-wrapper select {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .mobile-input input[type="tel"] {
+      width: 100%;
+  }
+
+  .continue-btn {
+      padding: 14px 25px;
+      font-size: 16px;
+  }
+}
+
 
 /* Contact Tab Panel Specific Styles */
 .contact-tab-panel .form-group input[type="tel"],
@@ -1476,8 +1570,15 @@ color: #000;
 @media (max-width: 480px) {
   .checkout-tabs {
     flex-wrap: nowrap; /* Ensure tabs stay in one row */
-    /* overflow-x: auto;   } */
+    /* overflow-x: auto; */
+  }
+  .contact-head-text{
+    font-size: 12px;
+  }
 
+  .checkbox-text{
+    font-size: 12px;
+  }
   .checkout-tab {
     font-size: 14px; /* Even smaller font size for smaller screens */
     padding: 6px 12px; /* Adjust padding for very small screens */
@@ -1506,4 +1607,153 @@ color: #000;
   }
 }
 
+
+
+
+.payment-images {
+  display: flex;           /* Arrange icons in a row */
+  justify-content: space-around; /* Center the icons horizontally */
+  align-items: center;     /* Vertically align the icons */
+  gap: 20px;               /* Space between icons */
+  margin-top: 50px;        /* Optional, to give some space above the icons */
+}
+
+.payment-icon {
+  width: 40px;             /* Adjust the width of the icons */
+  height: auto;            /* Maintain aspect ratio */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.payment-icon:hover {
+  transform: scale(1.1);   /* Slightly enlarge the icon when hovered */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .payment-images {
+      gap: 15px;           /* Reduce the space between icons for smaller screens */
+  }
+
+  .payment-icon {
+      width: 35px;         /* Slightly smaller icons on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-images {
+      gap: 10px;           /* Further reduce the space for extra small screens */
+  }
+
+  .payment-icon {
+      width: 30px;         /* Even smaller icons on very small screens */
+  }
+}
+
+
+
+.item-hints {
+  --purple: #720c8f;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  /* padding-right: 170px; */
+}
+.item-hints .hint {
+  /* margin: 150px auto; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item-hints .hint-dot {
+  z-index:3;
+  border-radius: 50%;
+  width: 40px;
+  height: 60px;
+  -webkit-transform: translate(-0%, -0%) scale(0.95);
+  transform: translate(-0%, -0%) scale(0.95);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  color: white;
+}
+.item-hints .hint-radius {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.item-hints .hint[data-position="1"] .hint-content {
+  top: 85px;
+  left: 50%;
+  margin-left: 55px;
+}
+.item-hints .hint-content {
+  width: 200px;
+  position: absolute;
+  z-index: 5;
+  padding: 35px 0;
+  opacity: 0;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+  color: #fff;
+  visibility: hidden;
+  pointer-events: none;
+}
+.item-hints .hint:hover .hint-content {
+  position: absolute;
+  z-index: 5;
+  padding: 35px 0;
+  opacity: 1;
+  -webkit-transition: opacity 0.7s ease, visibility 0.7s ease;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+  color: #fff;
+  visibility: visible;
+  pointer-events: none;
+}
+.item-hints .hint-content::before {
+  width: 0px;
+  bottom: 29px;
+  left: 0;
+  content: "";
+  background-color: #fff;
+  height: 1px;
+  position: absolute;
+  transition: width 0.4s;
+}
+.item-hints .hint:hover .hint-content::before {
+  width: 180px;
+  transition: width 0.4s;
+}
+.item-hints .hint-content::after {
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transform: rotate(-225deg);
+  transform: rotate(-225deg);
+  bottom: 29px;
+  left: 0;
+  width: 80px;
+  content: "";
+  background-color: #fff;
+  height: 1px;
+  position: absolute;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.item-hints .hint:hover .hint-content::after {
+  opacity: 1;
+  visibility: visible;
+}
+.item-hints .hint[data-position="4"] .hint-content {
+  bottom: 85px;
+  left: 50%;
+  margin-left: 56px;
 }

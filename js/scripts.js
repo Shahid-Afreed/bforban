@@ -354,18 +354,16 @@ function showTab(tabId) {
 }
 
 
-// Get the select dropdown and mobile input field
-const countryCodeSelect = document.getElementById('countryCode');
-const mobileInput = document.getElementById('mobile');
+document.addEventListener('DOMContentLoaded', function () {
+    const countryCodeSelect = document.getElementById('countryCode');
+    const mobileInput = document.getElementById('mobile');
 
-// Add an event listener for when the user selects a country code
-countryCodeSelect.addEventListener('change', function() {
-    // Set the value of the mobile input to include the selected country code
-    mobileInput.value = countryCodeSelect.value + ' ';  // Add a space after the country code for better UX
+    // Update mobile input value based on selected country code
+    countryCodeSelect.addEventListener('change', function() {
+        const selectedCode = countryCodeSelect.value;
+        mobileInput.value = mobileInput.value.replace(/^(\+\d+)/, selectedCode);  // Replace any existing code
+    });
 });
-
-// Initialize the mobile input with the default selected country code
-mobileInput.value = countryCodeSelect.value + ' ';
 
 
       

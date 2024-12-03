@@ -76,9 +76,10 @@
 
 
 .checkout-modal-content{
-  background-image: url('images/checkout.jpg'); /* Set the background image */
-  background-size: cover; /* Ensures the background covers the entire modal content */
+  background-image: url('images/checkout.jpg'); 
+  background-size: cover; 
   background-position: center; 
+  /* background-position: bottom; */
   /* filter: brightness(80%); */
 }
 
@@ -317,6 +318,8 @@
               <button class="add-btn" id="addGSTBtn"><i class="bi bi-plus-circle"></i></button>
             </div>
 
+            
+
           
     
             <!-- Collapsible section for GST Add -->
@@ -345,36 +348,58 @@
                 <!-- Contact Tab Content -->
                 <div class="contact-tab-panel tab-panel active" id="contactContent">
                     <div class="checkout-info">
+
+                      <div class="item-hints">
+                        <div class="hint" data-position="4">
+                          <span class="hint-dot"><div class="contct-icon"><i class="bi bi-person-lines-fill"></i></div>
+                          </span>
+                          <div class="hint-content do--split-children">
+                            <p>Use Navbar to navigate the website quickly and easily.</p>
+                          </div>
+                        </div>
+                      </div>
+                      
                         <h2 class="contact-head">Contact Details</h2>
                         <p class="contact-head-text">Enter your email and mobile number to continue</p>
         
                         <!-- Contact Form -->
                         <form id="contactForm">
-                          <div class="contact-checkout-form-group">
+                          <div class="contact-checkout-form-group pt-4">
                               <div class="mobile-input">
-                                  <select id="countryCode" name="countryCode" class="country-code">
-                                      <option value="+1">+1</option> <!-- Example country code -->
-                                      <option value="+44">+44</option>
-                                      <option value="+91">+91</option>
-                                      <!-- Add more country codes as needed -->
-                                  </select>
+                                  <div class="country-code-wrapper">
+                                      <select id="countryCode" name="countryCode">
+                                          <option value="+1">+1</option>
+                                          <option value="+44">+44</option>
+                                          <option value="+91">+91</option>
+                                          <!-- Add more country codes as needed -->
+                                      </select>
+                                  </div>
                                   <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required pattern="[0-9]*" inputmode="numeric">
                               </div>
                           </div>
-                          
+                      
                           <div class="contact-checkout-form-group">
                               <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                           </div>
-                          
+                      
                           <div class="contact-checkout-form-group">
                               <label for="subscribe">
                                   <input type="checkbox" id="subscribe" name="subscribe">
-                                  Subscribe to newsletters
+                                  <span class="checkbox-text">Send me offers and order updates</span>
                               </label>
                           </div>
-                          
+                      
                           <button type="submit" class="continue-btn">Continue</button>
                       </form>
+
+
+                      <div class="payment-images">
+                        <img src="images/visa.png" alt="Visa" class="payment-icon">
+                        <img src="images/mastercard.png" alt="Mastercard" class="payment-icon">
+                        <img src="images/paytm.png" alt="Paytm" class="payment-icon">
+                        <img src="images/google-pay.png" alt="UPI" class="payment-icon">
+                    </div>
+                                          
                       
                     </div>
                 </div>
