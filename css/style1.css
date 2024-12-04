@@ -1695,7 +1695,7 @@ color: #000;
   margin-left: 55px;
 }
 .item-hints .hint-content {
-  width: 200px;
+  width: 300px;
   position: absolute;
   z-index: 5;
   padding: 35px 0;
