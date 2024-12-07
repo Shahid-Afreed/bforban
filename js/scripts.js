@@ -276,7 +276,7 @@ window.addEventListener('resize', () => {
 
 
     // Function to show the modal
-// Function to show the modal
+
 function showModal() {
     const modal = document.querySelector('.checkout-modal'); // Select the modal element
     modal.style.display = 'flex'; // Show the modal (set display to flex)
@@ -285,7 +285,7 @@ function showModal() {
     }, 10); // Add a small delay to trigger the transition
 }
 
-// Function to hide the modal when the close button is clicked
+// Function to hide the checkout modal only when the "Yes" button is clicked
 function hideModal() {
     const modal = document.querySelector('.checkout-modal'); // Select the modal element
     modal.classList.remove('show'); // Remove the expanding effect
@@ -294,38 +294,62 @@ function hideModal() {
     }, 300); // Match this duration with the transition time
 }
 
+// Function to show the close-btn-modal (confirmation modal)
+function showCloseModal() {
+    const closeModalContainer = document.querySelector('#closeModalContainer');
+    closeModalContainer.style.display = 'flex'; // Show the close confirmation modal
+}
+
 // Event listener for the checkout button
 const checkoutBtn = document.getElementById('checkoutBtn');
 checkoutBtn.addEventListener('click', showModal); // Show modal on checkout button click
 
 // Event listener for the modal close button (assuming there's a close button inside modal)
 const closeModalBtn = document.getElementById('closeModalBtn');
-closeModalBtn.addEventListener('click', hideModal); // Close modal on close button click
+closeModalBtn.addEventListener('click', showCloseModal); // Show the close confirmation modal on close button click
 
-// Collapse functionality for Order Summary Box
+// Event listener for the "Yes" button in the close confirmation modal
+const yesBtn = document.getElementById('yesBtn');
+yesBtn.addEventListener('click', function() {
+    hideModal(); // Close the checkout modal when 'Yes' is clicked
+    const closeModalContainer = document.querySelector('#closeModalContainer');
+    closeModalContainer.style.display = 'none'; // Hide the close confirmation modal after clicking 'Yes'
+});
+
+// Event listener for the "No" button in the close confirmation modal
+const noBtn = document.getElementById('noBtn');
+noBtn.addEventListener('click', function() {
+    const closeModalContainer = document.querySelector('#closeModalContainer');
+    closeModalContainer.style.display = 'none'; // Hide the close confirmation modal if 'No' is clicked
+});
+
+// Prevent the modal from closing if clicked outside of the modal
+window.addEventListener('click', function(event) {
+    const modal = document.querySelector('.checkout-modal');
+    const closeModalContainer = document.querySelector('#closeModalContainer');
+    // Ensure the modal is not closed by clicking outside, and prevent closing when 'No' is clicked
+    if (event.target === modal && event.target !== closeModalContainer) {
+        return; // Do nothing when clicking outside modal, preventing auto-close
+    }
+});
+
+
+
 const orderSummaryBox = document.getElementById('orderSummaryBox');
 const collapseOrderSummary = document.getElementById('collapseOrderSummary');
 
-// Event listener to toggle the Order Summary collapsible section
+// Function to toggle the visibility of the order summary box
 orderSummaryBox.addEventListener('click', () => {
-    collapseOrderSummary.classList.toggle('show');
+    collapseOrderSummary.classList.toggle('show'); // Toggle the 'show' class to expand or collapse the order summary
 });
 
-// Collapse functionality for GST Add Section
+// Handle GST Add Section Toggle
 const addGSTBtn = document.getElementById('addGSTBtn');
 const collapseGSTAdd = document.getElementById('collapseGSTAdd');
 
-// Event listener to toggle the GST Add collapsible section
+// Function to toggle the visibility of the GST Add section
 addGSTBtn.addEventListener('click', () => {
-    collapseGSTAdd.classList.toggle('show');
-});
-
-// Close the modal if user clicks outside of the modal content
-window.addEventListener('click', function(event) {
-    const modal = document.querySelector('.checkout-modal');
-    if (event.target === modal) {
-        hideModal(); // Close the modal if user clicks outside of modal content
-    }
+    collapseGSTAdd.classList.toggle('show'); // Toggle the 'show' class to expand or collapse the GST input section
 });
 
 

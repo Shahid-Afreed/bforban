@@ -190,9 +190,9 @@
             <div class="cart-product">
               <!-- Flex container for image and product info (title, price, and size) -->
               <div class="product-info-cart">
-                <img src="images/card-cap3.jpg" alt="Product Image" class="product-image">
+                <a href="product_description.html"><img src="images/card-cap3.jpg" alt="Product Image" class="product-image"></a>
                 <div class="product-details">
-                  <h4 class="product-cart-title">Ghost Shell Functional Cap</h4>
+                  <h4 class=""><a href="product_description.html" class="product-cart-title">Ghost Shell Functional Cap</a></h4>
                   <p class="product-cart-price">RS.1999</p>
                   <p class="product-cart-size">Size: M</p>
                 </div>
@@ -252,6 +252,17 @@
               <button class="close-btn" id="closeModalBtn">
                 <i class="bi bi-arrow-left"></i> <!-- Back arrow icon -->
               </button>
+
+              <div class="close-modal-container" id="closeModalContainer">
+                <div class="close-modal-content text-center">
+                  <i class="fas fa-sign-out-alt exit-icon"></i>
+                  <h2 class="exit-text">Are you sure you want to exit?</h2>
+                  <div class="modal-buttons pt-2">
+                    <button class="modal-btn yes-btn" id="yesBtn">Yes,exit</button>
+                    <button class="modal-btn no-btn" id="noBtn">Continue shopping</button>
+                  </div>
+                </div>
+              </div>
         
               <!-- Heading Centered -->
               <h2 class="left-col-heading  text-shine ">BFORBAN CLOTHING</h2>
@@ -281,7 +292,7 @@
                   <div class="order-details-left">
                     <!-- Order item with product name, quantity, and price -->
                     <div class="order-item">
-                      <div class="item-name">OPIUM-TSHIRT</div> <!-- Product name -->
+                      <div class="item-name">Ghost Shell Functional Cap</div> <!-- Product name -->
                       <div class="item-price">Rs. 1999</div> <!-- Item price, aligned right -->
                     </div>
                     
@@ -369,7 +380,7 @@
                                   <div class="country-code-wrapper">
                                       <select id="countryCode" name="countryCode">
                                           <option value="+1">+1</option>
-                                          <option value="+44">+44</option>
+                                          <option value="+44">+444</option>
                                           <option value="+91">+91</option>
                                           <!-- Add more country codes as needed -->
                                       </select>
@@ -423,6 +434,7 @@
                 </div>
             </div>
         </div>
+
         
         </div>
       </div>
