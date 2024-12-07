@@ -993,7 +993,7 @@
   /* background-color: black; Black background for the left column */
   color: white; /* White text color */
   border-radius: 5px;
-  width: 60%;
+  width: 45%;
 }
 
 /* Order Summary Box Hover Effect */
@@ -1021,22 +1021,23 @@
   width: 200%;
   height: 200%;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgb(255, 255, 255), rgba(255, 255, 255, 0.2));
-  animation: reflect 10s infinite linear;
+  animation: slideEffect 6s infinite ease-in-out;
   pointer-events: none; /* Ensure the effect doesn't interfere with interaction */
 }
 
-/* Continuous movement of the reflection */
-@keyframes reflect {
+/* Slide-In Effect */
+@keyframes slideEffect {
   0% {
-    transform: translateX(-100%) translateY(-100%); /* Start position (top-left) */
+    transform: translateX(-100%); /* Start from left */
   }
   50% {
-    transform: translateX(100%) translateY(100%); /* Move diagonally (bottom-right) */
+    transform: translateX(100%); /* Move to right */
   }
   100% {
-    transform: translateX(-100%) translateY(-100%); /* Reset to start position (top-left) */
+    transform: translateX(100%); /* Move back to the left */
   }
 }
+
 
 .order-summary-box:hover {
   background-color: white; /* Change background on hover */
@@ -1177,11 +1178,14 @@ color: #000;
 /* Checkout Right Column */
 .checkout-right-col {
   padding: 10px;
-  /* background-color: #ffffff41; */
+  background-color: white;
   border-radius: 5px;
   width: 100%;
   /* margin-top: 20px; */
   /* max-height: 500px;  */
+  /* border-radius: 20px;
+  border-start-start-radius: 0px;
+  border-start-end-radius: 0px; */
 }
 
 
@@ -1314,8 +1318,25 @@ color: #000;
     width: 100%; /* Make each column take the full width */
     /* margin-bottom: 20px; */
     height: fit-content; 
-    background-color: black;
+    /* background-color: black; */
+  }
+
+  .checkout-left-col{
+    background-color: #000;
     border-radius: 20px;/* Add space between the two stacked columns */
+
+  }
+
+  .checkout-right-col{
+    .checkout-right-col {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-radius: 0px;
+    }
+  }
+  .checkout-modal{
+    height: auto;
+    top: 150px;
   }
 
   /* Adjust modal width when columns are stacked */
@@ -1406,7 +1427,7 @@ color: #000;
   transition: all 0.3s ease;
   margin: 0 10px; /* Reduced space between the tabs */
   text-align: center; 
-  color: #ffffff59;/* Center text in each tab */
+  color: #0000008a;/* Center text in each tab */
 }
 
 .checkout-tab.active {
@@ -1445,9 +1466,11 @@ color: #000;
 }
 .contact-head{
   font-size: 22px;
+  color: black;
 }
 .contact-head-text{
   font-size: 14px;
+  color: black;
 }
 
 .checkout-info-contact p {
@@ -1547,6 +1570,7 @@ color: #000;
 .continue-btn:active {
   background-color: black;
   color: white;
+  border: 1px solid;
 }
 
 /* Focus/Active States for Form Inputs */
@@ -1670,7 +1694,7 @@ color: #000;
 
   .continue-btn {
     font-size: 14px; /* Smaller button text */
-    padding: 8px 16px; /* Adjust button size for mobile */
+    /* padding: 8px 16px;  */
   }
 }
 
@@ -1689,7 +1713,7 @@ color: #000;
   }
   .checkout-tab {
     font-size: 14px; /* Even smaller font size for smaller screens */
-    padding: 6px 12px; /* Adjust padding for very small screens */
+    padding: 6px 12px;
   }
 
   .tab-content {
@@ -1711,7 +1735,7 @@ color: #000;
 
   .continue-btn {
     font-size: 14px; /* Adjust button font size */
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
   }
 }
 
@@ -1784,7 +1808,7 @@ color: #000;
   display: flex;
   align-items: center;
   /* justify-content: center; */
-  color: white;
+  color: black;
 }
 .item-hints .hint-radius {
   background-color: rgba(255, 255, 255, 0.1);
@@ -1861,7 +1885,7 @@ color: #000;
   visibility: visible;
 }
 .item-hints .hint[data-position="4"] .hint-content {
-  bottom: 85px;
+  bottom: 150px;
   left: 50%;
   margin-left: 56px;
 }
