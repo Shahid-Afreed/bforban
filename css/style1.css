@@ -937,27 +937,38 @@
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  width: aut; /* Ensure buttons only take the required space */
+  width: auto; /* Ensure buttons only take the required space */
 }
 
 #yesBtn {
   background-color: black;
-  border: 1px solid white; /* Blue background for 'No' */
+  /* border: 1px solid white;  */
+  color: white;
+  border-radius: 20px;
+}
+.find-more{
+  text-decoration: none;
   color: white;
 }
 
+.find-more:hover{
+  color: black;
+}
+
 #yesBtn:hover {
-  background-color: #c9302c;
+  background-color: white;
+  color: black;
 }
 
 #noBtn {
   background-color: black;
-  border: 1px solid white; /* Blue background for 'No' */
   color: white;
+  border-radius: 20px;
 }
 
 #noBtn:hover {
-  background-color: green;
+  background-color: white;
+  color: black;
 }
 
 /* Media Queries for smaller screens */
